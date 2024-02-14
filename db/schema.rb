@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_194201) do
     t.datetime "start_at"
     t.datetime "end_at"
     t.float "total_amount"
-    t.integer "status"
+    t.integer "status", default: 0
     t.bigint "masterpiece_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -57,13 +57,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_194201) do
 
   create_table "masterpieces", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.string "address"
     t.string "category"
-    t.string "longitude"
-    t.string "latitude"
+    t.float "longitude"
+    t.float "latitude"
     t.float "price"
-    t.boolean "available"
+    t.boolean "available", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_194201) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
-    t.string "content"
+    t.text "content"
     t.bigint "user_id", null: false
     t.bigint "booking_id", null: false
     t.datetime "created_at", null: false
