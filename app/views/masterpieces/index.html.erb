@@ -1,5 +1,10 @@
 <h1>Voici la liste des oeuvres</h1>
 
-<% @masterpieces.each do |masterpiece|  %>
-<%= masterpiece.title  %>
-<% end  %>
+<ul>
+  <% @masterpieces.each do |masterpiece|  %>
+    <li>
+      <%= link_to masterpiece.title, masterpiece %>
+    </li>
+
+  <% end  %>
+</ul>

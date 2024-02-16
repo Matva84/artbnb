@@ -1,0 +1,9 @@
+<h1><%= @masterpiece.title %></h1>
+
+<p><strong>Titre:</strong> <%= @masterpiece.title %></p>
+<p><strong>Description:</strong> <%= @masterpiece.description %></p>
+<p><strong>Prix:</strong> <%= @masterpiece.price %></p>
+<p><strong>Adresse:</strong> <%= @masterpiece.address %></p>
+<p><strong>Catégorie:</strong> <%= @masterpiece.category %></p>
+
+<%= link_to 'Retour à la liste des oeuvres', masterpieces_path %>
