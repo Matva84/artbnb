@@ -1,5 +1,4 @@
 class MasterpiecesController < ApplicationController
- # before_action :set_masterpiece, only: [:show, :destroy]
 
   def index
     @masterpieces = Masterpiece.all
@@ -10,9 +9,16 @@ class MasterpiecesController < ApplicationController
   end
 
   def new
+    @masterpiece = Masterpiece.new
   end
 
   def create
+    @masterpiece = Masterpiece.new(masterpiece_params)
+    if @masterpiece.save
+      redirect_to masterpieces_path, notice: "La nouvelle œuvre a été ajoutée avec succès."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -21,9 +27,9 @@ class MasterpiecesController < ApplicationController
   private
 
   def set_masterpiece
-    # @masterpiece = Masterpiece.find(params[:id])
   end
 
   def masterpiece_params
+    params.require(:masterpiece).permit(:title, :description, :price, :address, :category)
   end
 end
