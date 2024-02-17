@@ -30,6 +30,6 @@ class MasterpiecesController < ApplicationController
   end
 
   def masterpiece_params
-    params.require(:masterpiece).permit(:title, :description, :price, :address, :category)
+    params.require(:masterpiece).permit(:title, :description, :price, :address, :category, :photo)
   end
 end

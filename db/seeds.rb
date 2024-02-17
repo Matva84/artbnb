@@ -26,7 +26,7 @@ masterpiece = Masterpiece.create(title: "Balancing", description: "Cette œuvre 
 puts "Created test #{masterpiece.title}"
 
 # Oeuvre 2
-Masterpiece.create(title: "Flamenco", description: "Cette œuvre créée en terre fut moulée pour être réalisée en 8 tirages et 4 épreuves d'artiste.", price: "4500", address: "France", category: "sculture", user_id: user_mv.id)
+Masterpiece.create(title: "Flamenco", description: "Cette œuvre créée en terre fut moulée pour être réalisée en 8 tirages et 4 épreuves d'artiste.", price: "4500", address: "France", category: "sculpture", user_id: user_mv.id)
 # URL : https://media.artsper.com/artwork/2144158_1_m.jpg
 
 # Oeuvre 3
