@@ -7,6 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "open-uri"
 
 puts "Cleaning databases..."
 Masterpiece.destroy_all
@@ -21,13 +22,16 @@ user_fl = User.create(email: "fl@email.com", password: "password")
 puts "Creating masterpieces..."
 
 # Oeuvre 1
-masterpiece = Masterpiece.create(title: "Balancing", description: "Cette œuvre comprend du graphite, de l'encre et de la gouache, et est une combinaison d'exécutions intuitives et planifiées.", price: "1587", address: "Royaume-Uni", category: "paint", user_id: user_bq.id)
+file = URI.open("https://media.artsper.com/artwork/652392_1_l.jpg")
+masterpiece = Masterpiece.new(title: "Balancing", description: "Cette œuvre comprend du graphite, de l'encre et de la gouache, et est une combinaison d'exécutions intuitives et planifiées.", price: "1587", address: "Royaume-Uni", category: "paint", user_id: user_bq.id)
+masterpiece.photo.attach(io: file, filename: "balancing.png", content_type: "image/png")
+masterpiece.save
 # URL photo : https://media.artsper.com/artwork/652392_1_l.jpg
 
 puts "Created test #{masterpiece.title}"
 
 # Oeuvre 2
-Masterpiece.create(title: "Flamenco", description: "Cette œuvre créée en terre fut moulée pour être réalisée en 8 tirages et 4 épreuves d'artiste.", price: "4500", address: "France", category: "sculture", user_id: user_mv.id)
+Masterpiece.save(title: "Flamenco", description: "Cette œuvre créée en terre fut moulée pour être réalisée en 8 tirages et 4 épreuves d'artiste.", price: "4500", address: "France", category: "sculture", user_id: user_mv.id)
 # URL : https://media.artsper.com/artwork/2144158_1_m.jpg
 
 # Oeuvre 3
@@ -69,6 +73,3 @@ puts "Finished!"
 # curl "url > nom de la photo"
 # puis lancer, Cloudinary::Uploader.upload("nom de la photo")
 # puis, rm "nom de la photo"
-#
-# dans ce fichier :
-# ajouter dans chaque oeuvre, photo: "cl_image_tag("THE_IMAGE_ID_FROM_cloudinary")"
