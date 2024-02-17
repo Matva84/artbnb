@@ -6,7 +6,7 @@ class Masterpiece < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
   # j'ai proposé 3 types d'oeuvre : peinture, sculture, photo
-  validates :category, presence: true, inclusion: { in: %w(paint sculture photo) }
+  validates :category, presence: true, inclusion: { in: %w(paint sculpture photo) }
   validates :address, presence: true
   # active storage :
   has_one_attached :photo
