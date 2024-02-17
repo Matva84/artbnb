@@ -32,4 +32,11 @@
     </div>
   </div>
 
+  <div class="searchdate">
+    <%= simple_form_for @search, method: :get, defaults: {required: false } do |f| %>
+      <%= f.start_at :title, label: "Start at", input_html: {type: :date, name: :start_at, value: params.dig(:start_at)} %>
+      <%= f.end_at :description, label: "End at", input_html: {type: :date, name: :end_at, value: params.dig(:end_at)} %>
+    <% end %>
+  </div>
+
 </div>
