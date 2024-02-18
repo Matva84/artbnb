@@ -8,6 +8,4 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :masterpieces, dependent: :destroy
 
-  validates :name, presence: true
-  validates :address, presence: true
 end
