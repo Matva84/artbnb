@@ -1,1 +1,29 @@
 // Specific CSS for your home-page
+body {
+  background-color: #f5f5f5;
+}
+
+.searchtypeofcategory {
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+  padding: 10px 20%;
+
+  .form-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+.search {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.searchdesc {
+  padding: 10px 20%;
+}
