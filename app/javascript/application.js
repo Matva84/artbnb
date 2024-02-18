@@ -3,3 +3,10 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
+
+let searchBar = document.querySelector(".searchdesc")
+searchBar.addEventListener("click", (event) => {
+  let searchForm = document.querySelector(".search")
+  console.log(searchForm)
+  searchForm.classList.toggle("hidden")
+})
