@@ -12,16 +12,16 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "My bookings", "bookings#index", class: "nav-link" %>
+            <%= link_to "My bookings", bookings_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Manage my masterpieces", "masterpieces#index", class: "nav-link" %>
+            <%= link_to "Manage my masterpieces", bookings_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Add a new masterpiece", "masterpieces#create", class: "nav-link" %>
+            <%= link_to "Add a new masterpiece", new_masterpiece_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
