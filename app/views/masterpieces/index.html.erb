@@ -1,14 +1,14 @@
 
-  <div class="searchdesc">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search in title or description" aria-label="Seacrh" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Search</button>
-      </div>
-    </div>
-  </div>
+<div class="searchdesc">
+      <%= simple_form_for :search, method: :get do |f| %>
+        <div class="searchdesc">
+          <%= f.input :search, label: "Search by title, description or address" %>
+          <%= f.submit "Search"%>
+        </div>
+      <% end %>
+</div>
 
-<div class="search hidden">
+<div class="divsearch hidden">
   <div class="searchtypeofcategory">
 
       <% ms = %w(paint sculpture photo) %>
@@ -20,14 +20,6 @@
         </label>
       </div>
       <% end %>
-
-      <div class="form-group col-md-4">
-        <label for="inputState"></label>
-        <select id="inputState" class="form-control">
-          <option selected>Select country...</option>
-          <option>Maybe use of scountry select gem here...</option>
-        </select>
-      </div>
 
   </div>
 

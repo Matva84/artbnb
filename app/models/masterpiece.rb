@@ -10,4 +10,9 @@ class Masterpiece < ApplicationRecord
   validates :address, presence: true
   # active storage :
   has_one_attached :photo
+
+  include PgSearch::Model
+  # multisearchable against: [:title, :description, :category, :address]
+  pg_search_scope :search_by_title_description_and_address,
+    against: [ :title, :description, :category, :address ], using: { tsearch: { prefix: true } }
 end

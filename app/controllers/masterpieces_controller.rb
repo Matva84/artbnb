@@ -2,7 +2,11 @@ class MasterpiecesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @masterpieces = Masterpiece.all
+    if params[:search].present?
+      @masterpieces = Masterpiece.search_by_title_description_and_address(params[:search][:search])
+    else
+      @masterpieces = Masterpiece.all
+    end
   end
 
   def show
