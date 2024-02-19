@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Réserver votre <%= @masterpiece.title %> </h2>
+
+  <%= simple_form_for [@masterpiece, @booking] do |f| %>
+    <div class="form-group mt-3 ">
+      <%= f.input :start_at, class: 'form-control', as: :date %>
+    </div>
+
+    <div class="form-group mt-3">
+      <%= f.input :end_at, class: 'form-control', as: :date %>
+    </div>
+
+    <div class="form-group mt-3">
+      <%= f.submit 'Réserver', class: 'btn btn-primary' %>
+    </div>
+
+  <% end %>
+
+<%# on pourra prévoir ici un peu de js pour afficher le prix total en fonction du nombre de jours sélectionnés %>
+
+  <%= link_to 'Retour à l\'oeuvre', masterpiece_path(@masterpiece.id), class: 'btn btn-secondary mt-3' %>
+</div>
