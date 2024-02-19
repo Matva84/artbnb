@@ -1,4 +1,5 @@
 class MasterpiecesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @masterpieces = Masterpiece.all
@@ -30,6 +31,6 @@ class MasterpiecesController < ApplicationController
   end
 
   def masterpiece_params
-    params.require(:masterpiece).permit(:title, :description, :price, :address, :category, :photo)
+    params.require(:masterpiece).permit(:id, :title, :description, :price, :address, :category, :photo)
   end
 end
