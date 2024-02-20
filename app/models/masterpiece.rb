@@ -1,4 +1,5 @@
 class Masterpiece < ApplicationRecord
+  AUTHORIZED_CATEGORIES = ["Paint", "Sculpture", "Photo"]
   belongs_to :user
   has_many :bookings
 
@@ -6,7 +7,7 @@ class Masterpiece < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
   # j'ai proposé 3 types d'oeuvre : peinture, sculture, photo
-  validates :category, presence: true, inclusion: { in: %w(paint sculpture photo) }
+  validates :category, presence: true, inclusion: { in: AUTHORIZED_CATEGORIES }
   validates :address, presence: true
   # active storage :
   has_one_attached :photo

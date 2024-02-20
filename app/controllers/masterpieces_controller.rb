@@ -7,6 +7,15 @@ class MasterpiecesController < ApplicationController
     else
       @masterpieces = Masterpiece.all
     end
+    if params[:max_price].present?
+      @masterpieces = @masterpieces.where("price <= ?", params[:max_price])
+    end
+    if params[:category].present?
+      @masterpieces = @masterpieces.where(category: params[:category])
+    end
+    if params[:start_at].present? && params[:end_at].present?
+      puts "TODO"
+    end
   end
 
   def show
