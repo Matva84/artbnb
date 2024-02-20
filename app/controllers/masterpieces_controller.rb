@@ -14,9 +14,11 @@ class MasterpiecesController < ApplicationController
       if params[:category].present?
         @masterpieces = @masterpieces.where(category: params[:category])
       end
-      # if params[:start_at].present? && params[:end_at].present?
-      #   puts "TODO"
-      # end
+      if params[:start_at].present? && params[:end_at].present?
+        @masterpieces = @masterpieces.select do |masterpiece|
+          masterpiece.available?(params[:start_at], params[:end_at])
+        end
+      end
     end
   end
 
@@ -61,6 +63,6 @@ class MasterpiecesController < ApplicationController
   end
 
   def masterpiece_params
-    params.require(:masterpiece).permit(:id, :title, :description, :price, :address, :category, :photo)
+    params.require(:masterpiece).permit(:id, :title, :description, :price, :address, :category, :photo, :start_at, :end_at)
   end
 end
