@@ -23,6 +23,20 @@ class MasterpiecesController < ApplicationController
   end
 
   def destroy
+    @masterpiece = Masterpiece.find(params[:id])
+    @masterpiece.destroy
+    redirect_to masterpieces_collection_path, status: :see_other
+  end
+
+  def collection
+    @user = current_user
+    masterpieces = Masterpiece.all
+    @masterpieces = []
+    masterpieces.each do |masterpiece|
+      if masterpiece.user_id == @user.id
+        @masterpieces << masterpiece
+      end
+    end
   end
 
   private
