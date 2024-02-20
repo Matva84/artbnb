@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def index
     @user = current_user
+    @users = User.all
     @masterpieces = Masterpiece.all
     bookings = Booking.all
     @bookings = []
