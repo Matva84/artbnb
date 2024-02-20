@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   #root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  get "masterpieces/collection", to: "masterpieces#collection"
   resources :masterpieces do
     resources :bookings, only: [:new, :create]
+    get "bookings/list", to: "bookings#list"
   end
+
 
   root to: "masterpieces#index"
 
