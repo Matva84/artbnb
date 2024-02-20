@@ -2,19 +2,21 @@ class MasterpiecesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @masterpieces = Masterpiece.all
     if params[:search].present?
-      @masterpieces = Masterpiece.search_by_title_description_and_address(params[:search][:search])
-    else
-      @masterpieces = Masterpiece.all
-    end
-    if params[:max_price].present?
-      @masterpieces = @masterpieces.where("price <= ?", params[:search][:max_price])
-    end
-    if params[:category].present?
-      @masterpieces = @masterpieces.where(category: params[:category])
-    end
-    if params[:start_at].present? && params[:end_at].present?
-      puts "TODO"
+      key_word = params[:search][:search]
+      if key_word != ""
+        @masterpieces = Masterpiece.search_by_title_description_and_address(params[:search][:search])
+      end
+      if params[:max_price].present?
+        @masterpieces = @masterpieces.where("price <= ?", params[:max_price])
+      end
+      if params[:category].present?
+        @masterpieces = @masterpieces.where(category: params[:category])
+      end
+      # if params[:start_at].present? && params[:end_at].present?
+      #   puts "TODO"
+      # end
     end
   end
 
