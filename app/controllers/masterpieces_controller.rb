@@ -2,20 +2,23 @@ class MasterpiecesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @masterpieces = Masterpiece.all
     if params[:search].present?
-      @masterpieces = Masterpiece.search_by_title_description_and_address(params[:search][:search])
-    else
-      @masterpieces = Masterpiece.all
-    end
-    if params[:max_price].present?
-      puts @masterpieces
-      @masterpieces = @masterpieces.where("price <= ?", params[:search][:max_price])
-    end
-    if params[:category].present?
-      @masterpieces = @masterpieces.where(category: params[:search][:category])
-    end
-    if params[:start_at].present? && params[:search][:end_at].present?
-      puts "TODO"
+      key_word = params[:search][:search]
+      if key_word != ""
+        @masterpieces = Masterpiece.search_by_title_description_and_address(params[:search][:search])
+      end
+      if params[:max_price].present?
+        @masterpieces = @masterpieces.where("price <= ?", params[:max_price])
+      end
+      if params[:category].present?
+        @masterpieces = @masterpieces.where(category: params[:category])
+      end
+      if params[:start_at].present? && params[:end_at].present?
+        @masterpieces = @masterpieces.select do |masterpiece|
+          masterpiece.available?(params[:start_at], params[:end_at])
+        end
+      end
     end
   end
 
@@ -60,6 +63,6 @@ class MasterpiecesController < ApplicationController
   end
 
   def masterpiece_params
-    params.require(:masterpiece).permit(:id, :title, :description, :price, :address, :category, :photo)
+    params.require(:masterpiece).permit(:id, :title, :description, :price, :address, :category, :photo, :start_at, :end_at)
   end
 end
