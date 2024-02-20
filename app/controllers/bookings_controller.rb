@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def index
     @user = current_user
+    @users = User.all
     @masterpieces = Masterpiece.all
     bookings = Booking.all
     @bookings = []
@@ -41,7 +42,21 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to bookings_path, status: :see_other
+    redirect_to root_path, status: :see_other
+  end
+
+  def list
+    @masterpiece = Masterpiece.find(params[:masterpiece_id])
+    @users = User.all
+    bookings = Booking.all
+    @bookings = []
+    # je prends que les bookings qui correspondent à mon oeuvre, et je passe
+    # uniquement cette liste à la vue
+    bookings.each do |booking|
+      if booking.masterpiece_id == @masterpiece.id
+        @bookings << booking
+      end
+    end
   end
 
 end

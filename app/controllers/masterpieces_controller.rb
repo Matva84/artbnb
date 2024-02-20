@@ -6,6 +6,7 @@ class MasterpiecesController < ApplicationController
   end
 
   def show
+    @users = User.all
     @masterpiece = Masterpiece.find(params[:id])
   end
 

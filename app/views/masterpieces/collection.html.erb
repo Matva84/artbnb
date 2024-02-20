@@ -7,6 +7,7 @@
           <li class="list-group-item mt-3">
             <%= link_to masterpiece.title, masterpiece %>
             <%= link_to 'Supprimer annonce', masterpiece_path(masterpiece.id), class: 'btn btn-info', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
+            <%= link_to 'Voir les réservations en cours', masterpiece_bookings_list_path(masterpiece.id), class: 'btn btn-primary' %>
           </li>
         <% end  %>
       </ul>

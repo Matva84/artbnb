@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Voici la liste des reservations pour <%= @masterpiece.title%> </h1>
+      <ul class="list-group">
+        <% @bookings.each do |booking|  %>
+            <li class="list-group-item mt-3">
+              Locataire : <%= @users.find(booking.user_id).email %>
+              Montant : <%= booking.total_amount %>
+              Date de début : <%= booking.start_at %>
+              Date de fin : <%= booking.end_at %>
+              <%= link_to 'Annuler cette réservation', booking_path(booking.id), class: 'btn btn-info', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette réservation?"} %>
+            </li>
+        <% end  %>
+      </ul>
+    </div>
+  </div>
