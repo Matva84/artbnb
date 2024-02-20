@@ -6,10 +6,10 @@
           <%= f.input :max_price, label: "Maximal price",required: false,
               input_html: { type: :number,name: :max_price,value: params.dig(:max_price) } %>
           <%= f.input :category, label: "Category",collection: Masterpiece::AUTHORIZED_CATEGORIES,
-              include_blank: true,selected: params.dig(:category),input_html: { name: :category } %>
-          <%= f.input :starts_at, label: "Start at ",input_html: { type: :date,
-              name: :starts_at, value: params.dig(:start_at) } %>
-          <%= f.input :ends_at, label: "End at", input_html: { type: :date, name: :end_at, value: params.dig(:end_at) } %>
+              include_blank: true, selected: params.dig(:category), input_html: { name: :category } %>
+          <%= f.input :start_at, label: "Start at ",input_html: { type: :date,
+              name: :start_at, value: params.dig(:start_at) } %>
+          <%= f.input :end_at, label: "End at", input_html: { type: :date, name: :end_at, value: params.dig(:end_at) } %>
           <%= f.submit "Search"%>
         </div>
       <% end %>
