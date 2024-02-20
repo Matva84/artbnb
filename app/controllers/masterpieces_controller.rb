@@ -8,12 +8,13 @@ class MasterpiecesController < ApplicationController
       @masterpieces = Masterpiece.all
     end
     if params[:max_price].present?
+      puts @masterpieces
       @masterpieces = @masterpieces.where("price <= ?", params[:search][:max_price])
     end
     if params[:category].present?
-      @masterpieces = @masterpieces.where(category: params[:category])
+      @masterpieces = @masterpieces.where(category: params[:search][:category])
     end
-    if params[:start_at].present? && params[:end_at].present?
+    if params[:start_at].present? && params[:search][:end_at].present?
       puts "TODO"
     end
   end

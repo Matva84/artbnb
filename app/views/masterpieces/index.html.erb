@@ -2,14 +2,14 @@
 <div class="searchdesc">
       <%= simple_form_for :search, method: :get do |f| %>
         <div class="searchdesc">
-          <%= f.input :search, label: "Search by title, description or address" %>
+          <%= f.input :search, label: "Search by title, description or address", required: false %>
           <%= f.input :max_price, label: "Maximal price",required: false,
               input_html: { type: :number,name: :max_price,value: params.dig(:max_price) } %>
-          <%= f.input :category, label: "Category",collection: Masterpiece::AUTHORIZED_CATEGORIES,
+          <%= f.input :category, label: "Category",required: false, collection: Masterpiece::AUTHORIZED_CATEGORIES,
               include_blank: true, selected: params.dig(:category), input_html: { name: :category } %>
-          <%= f.input :start_at, label: "Start at ",input_html: { type: :date,
+          <%= f.input :start_at, label: "Start at ", required: false, input_html: { type: :date,
               name: :start_at, value: params.dig(:start_at) } %>
-          <%= f.input :end_at, label: "End at", input_html: { type: :date, name: :end_at, value: params.dig(:end_at) } %>
+          <%= f.input :end_at, label: "End at", required: false, input_html: { type: :date, name: :end_at, value: params.dig(:end_at) } %>
           <%= f.submit "Search"%>
         </div>
       <% end %>
