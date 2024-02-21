@@ -14,9 +14,9 @@ class MasterpiecesController < ApplicationController
       if params[:category].present?
         @masterpieces = @masterpieces.where(category: params[:category])
       end
-      if params[:start_at].present? && params[:end_at].present?
+      if params[:search][:start_at].present? && params[:search][:end_at].present?
         @masterpieces = @masterpieces.select do |masterpiece|
-          masterpiece.available?(params[:start_at], params[:end_at])
+          masterpiece.available?(params[:search][:start_at], params[:search][:end_at])
         end
       end
     end

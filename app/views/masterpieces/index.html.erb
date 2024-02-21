@@ -7,19 +7,12 @@
               input_html: { type: :number,name: :max_price,value: params.dig(:max_price) } %>
           <%= f.input :category, label: "Category",required: false, collection: Masterpiece::AUTHORIZED_CATEGORIES,
               include_blank: true, selected: params.dig(:category), input_html: { name: :category } %>
-          <%= f.input :start_at, label: "Start at ", required: false, input_html: { type: :date, name: :start_at, value: params.dig(:start_at) } %>
-          <%= f.input :end_at, label: "End at", required: false, input_html: { type: :date, name: :end_at, value: params.dig(:end_at) } %>
-          <%= f.submit "Search"%>
+          <%= f.input :start_at, label: "Début de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
+          <%= f.input :end_at, label: "Fin de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
+          <%= f.submit "Search", class: 'btn btn-primary'%>
         </div>
       <% end %>
 </div>
-
-  <div class="searchdate">
-<%#    <%= simple_form_for :search, method: :get, defaults: {required: false } do |f| %>
-<%#      <%= f.start_at :title, label: "Start at", input_html: {type: :date, name: :start_at, value: params.dig(:start_at)} %>
-<%#      <%= f.end_at :description, label: "End at", input_html: {type: :date, name: :end_at, value: params.dig(:end_at)} %>
-<%#    <% end %>
-  </div>
 
 <div class="container">
   <div class="row">
