@@ -6,7 +6,8 @@
       <ul class="list-group">
         <% @bookings.each do |booking|  %>
             <li class="list-group-item mt-3">
-              Locataire : <%= @users.find(booking.user_id).email %>
+              Locataire : <%= @users.find(booking.user_id).name %>
+              Contact : <%= @users.find(booking.user_id).email %>
               Montant : <%= booking.total_amount %>
               Date de début : <%= booking.start_at %>
               Date de fin : <%= booking.end_at %>
