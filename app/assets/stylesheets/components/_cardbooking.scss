@@ -1,15 +1,62 @@
 .cardbooking {
+  width: 600px;
+  height: 275px;
+  background-color: #f7f7f6;
+  border: solid 1px hsl(0, 1%, 85%);
+  border-radius: 16px;
 
+  h2 {
+    font-size: 24px;
+    margin: 32px 48px 32px 48px;
+  }
 }
 
 .cardbookingdates {
+  display : flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  margin: 16px 48px 32px 48px;
+
+  h2 {
+    font-size: 18px;
+    margin: 16px;
+  }
+  h3 {
+    font-size: 15px;
+    margin: 16px;
+    text-align: center;
+  }
 
 }
 
-.cardbookingselection {
-
+.cardbookingselection_left {
+  font-size: 14px;
+  border: solid 1px hsl(0, 1%, 85%);
+  border-radius: 8px 0px 0px 8px;
+  background-color: #fefffe;
+  width: 50%;
+}
+.cardbookingselection_right {
+  font-size: 14px;
+  border: solid 1px hsl(0, 1%, 85%);
+  border-radius: 0px 8px 8px 0px;
+  background-color: #fefffe;
+  width: 50%;
 }
 
 .cardbookingbtn {
+  color: white;
+  background-color: black;
+  font-size: medium;
+  padding: 10px 184px 10px 184px;
+  text-decoration: none;
+  border-radius: 8px;
+  margin: 48px 48px 48px 48px;
+  border: black 1px solid;
 
+  &:hover {
+    background-color: #f7f7f6;
+    color: black;
+  }
 }

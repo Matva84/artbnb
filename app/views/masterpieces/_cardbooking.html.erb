@@ -1,14 +1,14 @@
 <div class="cardbooking">
-  <h1><%= @masterpiece.price € par jour %></h1>
+  <h2><b><%= @masterpiece.price %> €</b> per day </h1>
   <div class="cardbookingdates">
-    <div class="cardbookingselection">
-      <h2>DEBUT</h2>
-      <h3><%= date.today %></h3>
+    <div class="cardbookingselection_left">
+      <h2><b>START FROM</b></h2>
+      <h3><%= Date.today %></h3>
     </div>
-    <div class="cardbookingselection">
-      <h2>FIN</h2>
-      <h3><%= date.today + 1 %></h3>
+    <div class="cardbookingselection_right">
+      <h2><b>TO</b></h2>
+      <h3><%= Date.today + 1 %></h3>
     </div>
   </div>
-  <a href="" class="cardbookingbtn">I want to book it !</a>
-</div>container
+  <%= link_to 'I want to book it', new_masterpiece_booking_path(params[:id]), class: 'cardbookingbtn' %>
+</div>
