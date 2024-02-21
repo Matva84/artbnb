@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
     @start_date = params[:booking]["start_at"].to_date
     @end_date = params[:booking]["end_at"].to_date
 
-    amount = (@end_date - @start_date) * @masterpiece.price
+    amount = (@end_date - @start_date + 1) * @masterpiece.price
 
     @booking = Booking.new(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
     if @masterpiece.available?(@start_date, @end_date) && @booking.save
@@ -37,6 +37,24 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+    @masterpiece = Masterpiece.find(params[:masterpiece_id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @user = current_user
+    @masterpiece = Masterpiece.find(params[:masterpiece_id])
+    @start_date = params[:booking]["start_at"].to_date
+    @end_date = params[:booking]["end_at"].to_date
+
+    amount = (@end_date - @start_date + 1) * @masterpiece.price
+
+    @booking.update(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
+    redirect_to bookings_path, notice: "La modification a été effectuée. Nouveau montant : #{amount}€"
   end
 
   def destroy

@@ -12,7 +12,8 @@
               Montant : <%= booking.total_amount %>
               Date de début : <%= booking.start_at %>
               Date de fin : <%= booking.end_at %>
-              <%= link_to 'Annuler réservation', booking_path(booking.id), class: 'btn btn-info', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette réservation?"} %>
+              <%= link_to 'Annuler ma réservation', booking_path(booking.id), class: 'btn btn-info', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette réservation?"} %>
+              <%= link_to 'Modifier ma réservation', edit_masterpiece_booking_path(booking.masterpiece_id, booking.id), class: 'btn btn-primary' %>
             </li>
         <% end  %>
       </ul>
