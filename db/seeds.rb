@@ -21,6 +21,19 @@ urls = ["https://media.artsper.com/artwork/652392_1_l.jpg",
   "https://media.artsper.com/artwork/2172266_1_m.jpg",
   "https://media.artsper.com/artwork/2173931_1_m.jpg"
 ]
+# urls = {
+#  "https://media.artsper.com/artwork/652392_1_l.jpg" => "4zg9prq7tznyrm1k4e8ykku5k0rf",
+#  "https://media.artsper.com/artwork/2144158_1_m.jpg" => "nxp58853uyyvzskn2t8x9s5zi09m",
+#  "https://media.artsper.com/artwork/2173875_1_m.jpg" => "dg7vo9tgpf48yv29kkryrccaokdc",
+#  "https://media.artsper.com/artwork/2139686_1_m.jpg" => "gcsyoqo0jv6m2f2f1yqw56qj1gyw",
+#  "https://media.artsper.com/artwork/2174006_1_m.jpg" => "lbwbyaflwxsxy8anql9jfn70phvk",
+#  "https://media.artsper.com/artwork/2162710_1_m.jpg" => "ia3p94cp42qv81mp565q52gbi7yx",
+#  "https://media.artsper.com/artwork/2172395_1_m.jpg" => "8tpcmcpbowt7jlz20g2an8nxdmv0",
+#  "https://media.artsper.com/artwork/2174509_1_m.jpg" => "4uxlrgexs4o257tpzlmiey82nmm2",
+#  "https://media.artsper.com/artwork/2172266_1_m.jpg" => "6490foyi1k2a8nywhisaslsdnwkt",
+#  "https://media.artsper.com/artwork/2173931_1_m.jpg" => "8ia1ura1dbqwifk95yn5271541sd"
+#}
+
 list_of_users = []
 list_of_masterpieces = []
 list_of_categories = ["Paint", "Sculpture", "Photo"]
