@@ -27,10 +27,6 @@ class MasterpiecesController < ApplicationController
     @masterpiece = Masterpiece.find(params[:id])
   end
 
-  def new
-    @masterpiece = Masterpiece.new
-  end
-
   def create
     @user = current_user
     @masterpiece = Masterpiece.new(masterpiece_params)
@@ -59,6 +55,7 @@ class MasterpiecesController < ApplicationController
       end
     end
     @bookings = Booking.all
+    @new_masterpiece = Masterpiece.new
   end
 
   private

@@ -2,6 +2,12 @@
   <div class="row">
     <div class="col">
       <h2>Voici la liste des oeuvres publiées de <%= @user.name %> </h2>
+      <div data-controller="toggle-add-masterpiece" class="my-3">
+        <button data-action="click->toggle-add-masterpiece#fire" class="btn btn-primary">Publier une annonce</button>
+        <div data-toggle-add-masterpiece-target="togglableElement" class="d-none">
+          <%= render "form", masterpiece: @new_masterpiece %>
+        </div>
+      </div>
       <ul class="list-group">
         <% @masterpieces.each do |masterpiece|  %>
           <li class="list-group-item mt-3">
