@@ -66,9 +66,6 @@ class MasterpiecesController < ApplicationController
 
   def masterpiece_params
     params.require(:masterpiece).permit(:title, :description, :price, :address, :category)
-<<<<<<< HEAD
-=======
     # il faudra ajouter la photo
->>>>>>> master
   end
 end
