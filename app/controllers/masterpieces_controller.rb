@@ -32,9 +32,11 @@ class MasterpiecesController < ApplicationController
   end
 
   def create
+    @user = current_user
     @masterpiece = Masterpiece.new(masterpiece_params)
+    @masterpiece.user_id = @user.id
     if @masterpiece.save
-      redirect_to masterpieces_path, notice: "La nouvelle œuvre a été ajoutée avec succès."
+      redirect_to masterpieces_collection_path, notice: "La nouvelle œuvre a été ajoutée avec succès."
     else
       render :new, status: :unprocessable_entity
     end
@@ -63,6 +65,7 @@ class MasterpiecesController < ApplicationController
   end
 
   def masterpiece_params
-    params.require(:masterpiece).permit(:id, :title, :description, :price, :address, :category, :photo, :start_at, :end_at)
+    params.require(:masterpiece).permit(:title, :description, :price, :address, :category)
+    # il faudra ajouter la photo
   end
 end

@@ -24,7 +24,7 @@
 
     <div class="form-group mt-3">
       <%= f.label :category %>
-      <%= f.select :category, ['paint', 'sculpture', 'photo'], {}, { class: 'form-control' } %>
+      <%= f.select :category, Masterpiece::AUTHORIZED_CATEGORIES, {}, { class: 'form-control' } %>
     </div>
 
     <div class="form-group mt-3">
@@ -33,5 +33,5 @@
 
   <% end %>
 
-  <%= link_to 'Retour à la liste des oeuvres', masterpieces_path, class: 'btn btn-secondary mt-3' %>
+  <%= link_to 'Retour à mes oeuvres', masterpieces_collection_path, class: 'btn btn-secondary mt-3' %>
 </div>
