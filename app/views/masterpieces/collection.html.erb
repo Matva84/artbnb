@@ -6,8 +6,15 @@
         <% @masterpieces.each do |masterpiece|  %>
           <li class="list-group-item mt-3">
             <%= link_to masterpiece.title, masterpiece %>
-            <%= link_to 'Supprimer annonce', masterpiece_path(masterpiece.id), class: 'btn btn-info', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
-            <%= link_to 'Voir les réservations en cours', masterpiece_bookings_list_path(masterpiece.id), class: 'btn btn-primary' %>
+            <div data-controller="toggle-reservation" class="my-3">
+              <button data-action="click->toggle-reservation#fire" class="btn btn-outline-primary">Voir les réservations programmées</button>
+              <div data-toggle-reservation-target="togglableElement" class="d-none">
+                <%= render "booking", bookings: @bookings, users: @users, masterpiece: masterpiece %>
+              </div>
+            </div>
+            <div>
+              <%= link_to 'Supprimer annonce', masterpiece_path(masterpiece.id), class: 'btn btn-info my-3', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
+            </div>
           </li>
         <% end  %>
       </ul>
