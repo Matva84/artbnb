@@ -9,6 +9,7 @@
       <p><strong>Prix par jour:</strong> <%= @masterpiece.price %></p>
       <p><strong>Adresse:</strong> <%= @masterpiece.address %></p>
       <p><strong>Catégorie:</strong> <%= @masterpiece.category %></p>
+      <%= cl_image_tag @masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
     </div>
   </div>
   <div class="row mt-3">
