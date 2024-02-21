@@ -32,8 +32,11 @@ class BookingsController < ApplicationController
                         params[:booking]["end_at(3i)"].to_i)
     amount = (@end_date - @start_date) * @masterpiece.price
     @booking = Booking.new(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
-    if @booking.save
-      redirect_to bookings_path, notice: "Booking successfully created. Total à payer : #{amount}€"
+    if @masterpiece.available?(@start_date, @end_date) && @booking.save
+      redirect_to bookings_path, notice: "La réservation a été effectuée. Total à payer : #{amount}€"
+    elsif @masterpiece.available?(@start_date, @end_date) == false
+      render :new, notice: "La réservation a été effectuée."
+      # prévoir un message d'alerte en JS
     else
       render :new
     end
