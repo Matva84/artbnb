@@ -1,7 +1,4 @@
-<div class="container">
-  <h1>Ajouter une nouvelle oeuvre</h1>
-
-  <%= simple_form_for @masterpiece do |f| %>
+<%= simple_form_for masterpiece do |f| %>
     <div class="form-groupmt-3 ">
       <%= f.label :title %>
       <%= f.text_field :title, class: 'form-control' %>
@@ -31,6 +28,3 @@
       <%= f.submit 'Enregistrer', class: 'btn btn-primary' %>
     </div>
   <% end %>
-
-  <%= link_to 'Retour à mes oeuvres', masterpieces_collection_path, class: 'btn btn-secondary mt-3' %>
-</div>
