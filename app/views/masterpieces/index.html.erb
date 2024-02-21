@@ -1,37 +1,18 @@
 
-  <div class="searchdesc">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search in title or description" aria-label="Seacrh" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Search</button>
-      </div>
-    </div>
-  </div>
-
-<div class="search hidden">
-  <div class="searchtypeofcategory">
-
-      <% ms = %w(paint sculpture photo) %>
-      <% ms.each do |item|%>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1">
-          <p><%= item %></p>
-        </label>
-      </div>
+<div class="searchdesc">
+      <%= simple_form_for :search, method: :get do |f| %>
+        <div class="searchdesc">
+          <%= f.input :search, label: "Search by title, description or address", required: false %>
+          <%= f.input :max_price, label: "Maximal price",required: false,
+              input_html: { type: :number,name: :max_price,value: params.dig(:max_price) } %>
+          <%= f.input :category, label: "Category",required: false, collection: Masterpiece::AUTHORIZED_CATEGORIES,
+              include_blank: true, selected: params.dig(:category), input_html: { name: :category } %>
+          <%= f.input :start_at, label: "Start at ", required: false, input_html: { type: :date, name: :start_at, value: params.dig(:start_at) } %>
+          <%= f.input :end_at, label: "End at", required: false, input_html: { type: :date, name: :end_at, value: params.dig(:end_at) } %>
+          <%= f.submit "Search"%>
+        </div>
       <% end %>
-
-      <div class="form-group col-md-4">
-        <label for="inputState"></label>
-        <select id="inputState" class="form-control">
-          <option selected>Select country...</option>
-          <option>Maybe use of scountry select gem here...</option>
-        </select>
-      </div>
-
-  </div>
-
-
+</div>
 
   <div class="searchdate">
 <%#    <%= simple_form_for :search, method: :get, defaults: {required: false } do |f| %>
@@ -39,8 +20,6 @@
 <%#      <%= f.end_at :description, label: "End at", input_html: {type: :date, name: :end_at, value: params.dig(:end_at)} %>
 <%#    <% end %>
   </div>
-
-</div>
 
 <div class="container">
   <div class="row">

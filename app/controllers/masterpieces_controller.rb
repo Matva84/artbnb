@@ -3,9 +3,27 @@ class MasterpiecesController < ApplicationController
 
   def index
     @masterpieces = Masterpiece.all
+    if params[:search].present?
+      key_word = params[:search][:search]
+      if key_word != ""
+        @masterpieces = Masterpiece.search_by_title_description_and_address(params[:search][:search])
+      end
+      if params[:max_price].present?
+        @masterpieces = @masterpieces.where("price <= ?", params[:max_price])
+      end
+      if params[:category].present?
+        @masterpieces = @masterpieces.where(category: params[:category])
+      end
+      if params[:start_at].present? && params[:end_at].present?
+        @masterpieces = @masterpieces.select do |masterpiece|
+          masterpiece.available?(params[:start_at], params[:end_at])
+        end
+      end
+    end
   end
 
   def show
+    @users = User.all
     @masterpiece = Masterpiece.find(params[:id])
   end
 
@@ -23,6 +41,20 @@ class MasterpiecesController < ApplicationController
   end
 
   def destroy
+    @masterpiece = Masterpiece.find(params[:id])
+    @masterpiece.destroy
+    redirect_to masterpieces_collection_path, status: :see_other
+  end
+
+  def collection
+    @user = current_user
+    masterpieces = Masterpiece.all
+    @masterpieces = []
+    masterpieces.each do |masterpiece|
+      if masterpiece.user_id == @user.id
+        @masterpieces << masterpiece
+      end
+    end
   end
 
   private
@@ -31,6 +63,6 @@ class MasterpiecesController < ApplicationController
   end
 
   def masterpiece_params
-    params.require(:masterpiece).permit(:id, :title, :description, :price, :address, :category, :photo)
+    params.require(:masterpiece).permit(:id, :title, :description, :price, :address, :category, :photo, :start_at, :end_at)
   end
 end
