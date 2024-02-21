@@ -6,16 +6,15 @@
       <% proprio_id = @masterpiece.user_id %>
       <p><strong>Propriétaire:</strong> <%= @users.find(proprio_id).name %></p>
       <p><strong>Description:</strong> <%= @masterpiece.description %></p>
-      <p><strong>Prix par jour:</strong> <%= @masterpiece.price %></p>
       <p><strong>Adresse:</strong> <%= @masterpiece.address %></p>
       <p><strong>Catégorie:</strong> <%= @masterpiece.category %></p>
       <%= cl_image_tag @masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+      <%= render "cardbooking", bookings: @bookings, users: @users, masterpiece: @masterpiece %>
     </div>
   </div>
   <div class="row mt-3">
     <div class="col">
       <%= link_to 'Retour à la liste des oeuvres', masterpieces_path, class: 'btn btn-secondary' %>
-      <%= link_to 'Réserver cet oeuvre', new_masterpiece_booking_path(params[:id]), class: 'btn btn-info' %>
     </div>
   </div>
 </div>
