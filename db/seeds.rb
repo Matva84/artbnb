@@ -37,17 +37,17 @@ Masterpiece.destroy_all
 User.destroy_all
 
 puts "Creating users..."
-  user_bq = User.create(email: "bq@email.com", password: "password")
+  user_bq = User.create(email: "bq@email.com", password: "password", name: "Benoit")
   list_of_users << user_bq
-  user_mv = User.create(email: "mv@email.com", password: "password")
+  user_mv = User.create(email: "mv@email.com", password: "password", name: "Mathieu")
   list_of_users << user_mv
-  user_gl = User.create(email: "gl@email.com", password: "password")
+  user_gl = User.create(email: "gl@email.com", password: "password", name: "Guillaume")
   list_of_users << user_gl
-  user_fl = User.create(email: "fl@email.com", password: "password")
+  user_fl = User.create(email: "fl@email.com", password: "password", name: "François")
   list_of_users << user_fl
 
   20.times do
-    user = User.create(email: Faker::Internet.email, password: "password")
+    user = User.create(email: Faker::Internet.email, password: "password", name: Faker::Name.name)
     list_of_users << user
   end
 puts "  >> #{User.count} users created"

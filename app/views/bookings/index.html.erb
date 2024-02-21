@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Voici la liste des reservations de <%= @user.email%> </h1>
+      <h1>Voici la liste des reservations de <%= @user.name%> </h1>
       <ul class="list-group">
         <% @bookings.each do |booking|  %>
             <li class="list-group-item mt-3">
