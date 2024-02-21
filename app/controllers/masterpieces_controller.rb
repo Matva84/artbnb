@@ -49,6 +49,7 @@ class MasterpiecesController < ApplicationController
   end
 
   def collection
+    @users = User.all
     @user = current_user
     masterpieces = Masterpiece.all
     @masterpieces = []
@@ -57,6 +58,7 @@ class MasterpiecesController < ApplicationController
         @masterpieces << masterpiece
       end
     end
+    @bookings = Booking.all
   end
 
   private

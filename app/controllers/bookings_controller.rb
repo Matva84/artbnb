@@ -48,18 +48,4 @@ class BookingsController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  def list
-    @masterpiece = Masterpiece.find(params[:masterpiece_id])
-    @users = User.all
-    bookings = Booking.all
-    @bookings = []
-    # je prends que les bookings qui correspondent à mon oeuvre, et je passe
-    # uniquement cette liste à la vue
-    bookings.each do |booking|
-      if booking.masterpiece_id == @masterpiece.id
-        @bookings << booking
-      end
-    end
-  end
-
 end
