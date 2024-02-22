@@ -61,7 +61,7 @@ puts "Creating users..."
 
   file = URI.open("https://kitt.lewagon.com/placeholder/users/franlorf1050")
   user_fl = User.new(email: "fl@email.com", password: "password", name: "François")
-  user_gl.photo.attach(io: file, filename: "francois.png", content_type: "image/png")
+  user_fl.photo.attach(io: file, filename: "francois.png", content_type: "image/png")
   user_fl.save!
   list_of_users << user_fl
 
