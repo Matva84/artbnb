@@ -23,40 +23,39 @@ class BookingsController < ApplicationController
   def create
     @user = current_user
     @masterpiece = Masterpiece.find(params[:masterpiece_id])
-    @start_date = Date.new(params[:booking]["start_at(1i)"].to_i,
-                          params[:booking]["start_at(2i)"].to_i,
-                          params[:booking]["start_at(3i)"].to_i)
+    @start_date = params[:booking]["start_at"].to_date
+    @end_date = params[:booking]["end_at"].to_date
 
-    @end_date = Date.new(params[:booking]["end_at(1i)"].to_i,
-                        params[:booking]["end_at(2i)"].to_i,
-                        params[:booking]["end_at(3i)"].to_i)
-    amount = (@end_date - @start_date) * @masterpiece.price
+    amount = (@end_date - @start_date + 1) * @masterpiece.price
+
     @booking = Booking.new(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
-    if @booking.save
-      redirect_to bookings_path, notice: "Booking successfully created. Total à payer : #{amount}€"
+    if @masterpiece.available?(@start_date, @end_date) && @booking.save
+      redirect_to bookings_path, notice: "La réservation a été effectuée. Total à payer : #{amount}€"
+    elsif @masterpiece.available?(@start_date, @end_date) == false
+      render :new, notice: "Cet oeuvre n'est plus disponibles sur ces dates."
+      # prévoir un message d'alerte en JS
     else
       render :new
     end
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @user = current_user
+    @masterpiece = Masterpiece.find(params[:masterpiece_id])
+    @start_date = params[:booking]["start_at"].to_date
+    @end_date = params[:booking]["end_at"].to_date
+
+    amount = (@end_date - @start_date + 1) * @masterpiece.price
+
+    @booking.update(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
+    redirect_to bookings_path, notice: "La modification a été effectuée. Nouveau montant : #{amount}€"
   end
 
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to root_path, status: :see_other
-  end
-
-  def list
-    @masterpiece = Masterpiece.find(params[:masterpiece_id])
-    @users = User.all
-    bookings = Booking.all
-    @bookings = []
-    # je prends que les bookings qui correspondent à mon oeuvre, et je passe
-    # uniquement cette liste à la vue
-    bookings.each do |booking|
-      if booking.masterpiece_id == @masterpiece.id
-        @bookings << booking
-      end
-    end
   end
 
 end

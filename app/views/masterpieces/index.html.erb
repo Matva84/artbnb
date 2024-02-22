@@ -37,25 +37,26 @@
   </div>
 </section>
 
-<div class="page-content">
   <section>
-  <div class="form">
-  <h2 class="form-title">Trouver une oeuvre à louer rapidement</h2>
-    <%= simple_form_for :search, method: :get do |f| %>
+    <div class="form">
+      <h2 class="form-title">Trouver une œuvre à louer rapidement</h2>
       <div class="searchdesc">
-        <%= f.input :search, label: "Search by title, description or address" %>
-        <%= f.input :max_price, label: "Maximal price", required: false,
-            input_html: { type: :number, name: :max_price, value: params.dig(:max_price) } %>
-        <%= f.input :category, label: "Category", collection: Masterpiece::AUTHORIZED_CATEGORIES,
-            include_blank: true, selected: params.dig(:category), input_html: { name: :category } %>
-        <%= f.input :start_at, label: "Start at", input_html: { type: :date,
-            name: :start_at, value: params.dig(:start_at) } %>
-        <%= f.input :end_at, label: "End at", input_html: { type: :date, name: :end_at, value: params.dig(:end_at) } %>
-        <%= f.submit "Search", class: "main-btn" %>
-      </div>
-    <% end %>
-  </div>
+        <%= simple_form_for :search, method: :get do |f| %>
+          <div class="searchdesc">
+            <%= f.input :search, label: "Search by title, description or address", required: false %>
+            <%= f.input :max_price, label: "Maximal price", required: false,
+                input_html: { type: :number, name: :max_price, value: params.dig(:max_price) } %>
+            <%= f.input :category, label: "Category", required: false, collection: Masterpiece::AUTHORIZED_CATEGORIES,
+                include_blank: true, selected: params.dig(:category), input_html: { name: :category } %>
+            <%= f.input :start_at, label: "Début de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
+            <%= f.input :end_at, label: "Fin de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
+            <%= f.submit "Search", class: 'main-btn' %>
+          </div>
+        </div>
+        <% end %>
+    </div>
   </section>
+
 
   <div class="searchdate">
     <%# <%= simple_form_for :search, method: :get, defaults: { required: false } do |f| %>
@@ -63,22 +64,26 @@
     <%# <%= f.end_at :description, label: "End at", input_html: { type: :date, name: :end_at, value: params.dig(:end_at) } %>
     <%# <% end %>
   </div>
-  <section>
-  <div class="show-list">
-    <div class="row">
-      <div class="col">
-        <h1>Voici la liste des œuvres</h1>
+
+  <div class="margin-content">
+    <section>
+    <div class="show-list">
+      <div class="row">
+        <div class="col">
+          <h1>Voici la liste des oeuvres</h1>
         <ul class="list-group">
-          <% @masterpieces.each do |masterpiece| %>
+          <% @masterpieces.each do |masterpiece|  %>
             <li class="list-group-item mt-3">
               <%= link_to masterpiece.title, masterpiece %>
+              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
             </li>
-          <% end %>
-        </ul>
+          <% end  %>
+          </ul>
+        </div>
       </div>
     </div>
+    </section>
   </div>
-  </section>
 
   <section>
     <div class="nav-blocks">
@@ -110,13 +115,6 @@
     </div>
     </section>
 
-  <section>
-    <div class="show-list"></div>
-  </section>
-
-  <section>
-    <div class="show-list"></div>
-  </section>
 
   <section>
     <div class="pre-footer"></div>

@@ -14,9 +14,11 @@ class MasterpiecesController < ApplicationController
       if params[:category].present?
         @masterpieces = @masterpieces.where(category: params[:category])
       end
-      # if params[:start_at].present? && params[:end_at].present?
-      #   puts "TODO"
-      # end
+      if params[:search][:start_at].present? && params[:search][:end_at].present?
+        @masterpieces = @masterpieces.select do |masterpiece|
+          masterpiece.available?(params[:search][:start_at], params[:search][:end_at])
+        end
+      end
     end
   end
 
@@ -25,16 +27,14 @@ class MasterpiecesController < ApplicationController
     @masterpiece = Masterpiece.find(params[:id])
   end
 
-  def new
-    @masterpiece = Masterpiece.new
-  end
-
   def create
+    @user = current_user
     @masterpiece = Masterpiece.new(masterpiece_params)
+    @masterpiece.user_id = @user.id
     if @masterpiece.save
-      redirect_to masterpieces_path, notice: "La nouvelle œuvre a été ajoutée avec succès."
+      redirect_to masterpieces_collection_path, notice: "La nouvelle œuvre a été ajoutée avec succès."
     else
-      render :new, status: :unprocessable_entity
+      render :collection, status: :unprocessable_entity
     end
   end
 
@@ -45,6 +45,7 @@ class MasterpiecesController < ApplicationController
   end
 
   def collection
+    @users = User.all
     @user = current_user
     masterpieces = Masterpiece.all
     @masterpieces = []
@@ -53,6 +54,8 @@ class MasterpiecesController < ApplicationController
         @masterpieces << masterpiece
       end
     end
+    @bookings = Booking.all
+    @new_masterpiece = Masterpiece.new
   end
 
   private
@@ -61,6 +64,7 @@ class MasterpiecesController < ApplicationController
   end
 
   def masterpiece_params
-    params.require(:masterpiece).permit(:id, :title, :description, :price, :address, :category, :photo)
+    params.require(:masterpiece).permit(:title, :description, :price, :address, :category)
+    # il faudra ajouter la photo
   end
 end

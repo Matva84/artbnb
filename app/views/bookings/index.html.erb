@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Voici la liste des reservations de <%= @user.email%> </h1>
+      <h1>Voici la liste des reservations de <%= @user.name%> </h1>
       <ul class="list-group">
         <% @bookings.each do |booking|  %>
             <li class="list-group-item mt-3">
@@ -12,7 +12,13 @@
               Montant : <%= booking.total_amount %>
               Date de début : <%= booking.start_at %>
               Date de fin : <%= booking.end_at %>
-              <%= link_to 'Annuler réservation', booking_path(booking.id), class: 'btn btn-info', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette réservation?"} %>
+              <%= link_to 'Annuler ma réservation', booking_path(booking.id), class: 'btn btn-info', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette réservation?"} %>
+              <div data-controller="toggle-booking-form" class="my-3">
+                <button data-action="click->toggle-booking-form#fire" class="btn btn-primary">Modifier ma réservation</button>
+                <div data-toggle-booking-form-target="togglableElement" class="d-none">
+                  <%= render "form", masterpiece: @masterpieces.find(booking.masterpiece_id), booking: booking %>
+                </div>
+              </div>
             </li>
         <% end  %>
       </ul>

@@ -5,8 +5,7 @@ Rails.application.routes.draw do
 
   get "masterpieces/collection", to: "masterpieces#collection"
   resources :masterpieces do
-    resources :bookings, only: [:new, :create]
-    get "bookings/list", to: "bookings#list"
+    resources :bookings, only: [:new, :create, :edit, :update]
   end
 
 

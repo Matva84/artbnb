@@ -1,0 +1,14 @@
+<div class="cardbooking">
+  <h2><b><%= @masterpiece.price %> €</b> per day </h1>
+  <div class="cardbookingdates">
+    <div class="cardbookingselection_left">
+      <h2><b>START FROM</b></h2>
+      <h3><%= Date.today %></h3>
+    </div>
+    <div class="cardbookingselection_right">
+      <h2><b>TO</b></h2>
+      <h3><%= Date.today + 1 %></h3>
+    </div>
+  </div>
+  <%= link_to 'I want to book it', new_masterpiece_booking_path(params[:id]), class: 'cardbookingbtn' %>
+</div>
