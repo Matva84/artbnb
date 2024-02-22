@@ -34,7 +34,7 @@ class MasterpiecesController < ApplicationController
     if @masterpiece.save
       redirect_to masterpieces_collection_path, notice: "La nouvelle œuvre a été ajoutée avec succès."
     else
-      render :new, status: :unprocessable_entity
+      render :collection, status: :unprocessable_entity
     end
   end
 
