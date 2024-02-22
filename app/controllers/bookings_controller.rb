@@ -39,11 +39,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def edit
-    @booking = Booking.find(params[:id])
-    @masterpiece = Masterpiece.find(params[:masterpiece_id])
-  end
-
   def update
     @booking = Booking.find(params[:id])
     @user = current_user
