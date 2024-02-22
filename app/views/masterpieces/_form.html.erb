@@ -25,6 +25,10 @@
     </div>
 
     <div class="form-group mt-3">
+      <%= f.input :photo, as: :file %>
+    </div>
+
+    <div class="form-group mt-3">
       <%= f.submit 'Enregistrer', class: 'btn btn-primary' %>
     </div>
   <% end %>

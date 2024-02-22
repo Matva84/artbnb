@@ -29,13 +29,41 @@
   </div>
 
 
-  <div class="dots-container">
-    <span class="dot" data-index="0"></span>
-    <span class="dot" data-index="1"></span>
-    <span class="dot" data-index="2"></span>
-    <span class="dot" data-index="3"></span>
-  </div>
-</section>
+
+    <div class="dots-container">
+      <span class="dot" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+      <span class="dot" data-index="3"></span>
+    </div>
+  </section>
+
+  <section>
+    <div class="show-list">
+      <div class="head">
+        <div class="text-content">
+          <h3>Voici la liste des oeuvres</h3>
+          <p>Découvrez les œuvres que nos clients adorent</p>
+        </div>
+        <div class="link">
+          <a href="..." class="secondary-btn">Découvrir la collection</a>
+        </div>
+      </div>
+
+      <div class="elements">
+        <div class="col">
+        <ul class="list-group">
+          <% @masterpieces.each do |masterpiece|  %>
+            <li class="list-group-item mt-3">
+              <%= link_to masterpiece.title, masterpiece %>
+              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+            </li>
+          <% end  %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section>
     <div class="form">
@@ -65,12 +93,20 @@
     <%# <% end %>
   </div>
 
-  <div class="margin-content">
     <section>
     <div class="show-list">
-      <div class="row">
+      <div class="head">
+        <div class="text-content">
+          <h3>Voici la liste des oeuvres</h3>
+          <p>Découvrez les œuvres que nos clients adorent</p>
+        </div>
+        <div class="link">
+          <a href="..." class="secondary-btn">Découvrir la collection</a>
+        </div>
+      </div>
+
+      <div class="elements">
         <div class="col">
-          <h1>Voici la liste des oeuvres</h1>
         <ul class="list-group">
           <% @masterpieces.each do |masterpiece|  %>
             <li class="list-group-item mt-3">
@@ -83,7 +119,6 @@
       </div>
     </div>
     </section>
-  </div>
 
   <section>
     <div class="nav-blocks">
