@@ -1,12 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 require "open-uri"
 require "faker"
 
@@ -50,13 +41,28 @@ Masterpiece.destroy_all
 User.destroy_all
 
 puts "Creating users..."
-  user_bq = User.create(email: "bq@email.com", password: "password", name: "Benoit")
+  file = URI.open("https://kitt.lewagon.com/placeholder/users/benoit-mint")
+  user_bq = User.new(email: "bq@email.com", password: "password", name: "Benoit")
+  user_bq.photo.attach(io: file, filename: "benoit.png", content_type: "image/png")
+  user_bq.save!
   list_of_users << user_bq
-  user_mv = User.create(email: "mv@email.com", password: "password", name: "Mathieu")
+
+  file = URI.open("https://kitt.lewagon.com/placeholder/users/matva84")
+  user_mv = User.new(email: "mv@email.com", password: "password", name: "Mathieu")
+  user_mv.photo.attach(io: file, filename: "mathieu.png", content_type: "image/png")
+  user_mv.save!
   list_of_users << user_mv
-  user_gl = User.create(email: "gl@email.com", password: "password", name: "Guillaume")
+
+  file = URI.open("https://kitt.lewagon.com/placeholder/users/guillaumelmt")
+  user_gl = User.new(email: "gl@email.com", password: "password", name: "Guillaume")
+  user_gl.photo.attach(io: file, filename: "guillaume.png", content_type: "image/png")
+  user_gl.save!
   list_of_users << user_gl
-  user_fl = User.create(email: "fl@email.com", password: "password", name: "François")
+
+  file = URI.open("https://kitt.lewagon.com/placeholder/users/franlorf1050")
+  user_fl = User.new(email: "fl@email.com", password: "password", name: "François")
+  user_fl.photo.attach(io: file, filename: "francois.png", content_type: "image/png")
+  user_fl.save!
   list_of_users << user_fl
 
   20.times do
