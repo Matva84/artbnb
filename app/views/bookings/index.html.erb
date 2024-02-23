@@ -5,10 +5,12 @@
       <ul class="list-group">
         <% @bookings.each do |booking|  %>
             <li class="list-group-item mt-3">
-            <%# je récupère les infos de la masterpiece faisant l'objet de la réservation %>
+              <a href="#" class="avatar">
+                <%= cl_image_tag @masterpieces.find(booking.masterpiece_id).photo.key, class: "avatar" %>
+              </a>
               Titre : <%= @masterpieces.find(booking.masterpiece_id).title %>
               <% proprio_id = @masterpieces.find(booking.masterpiece_id).user_id %>
-              Propriétaire : <%= @users.find(proprio_id).email %>
+              Propriétaire : <%= @users.find(proprio_id).name %>
               Montant : <%= booking.total_amount %>
               Date de début : <%= booking.start_at %>
               Date de fin : <%= booking.end_at %>
