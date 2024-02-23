@@ -1,24 +1,42 @@
 <div class="container">
 
-      <div class="showimage">
-        <%= cl_image_tag @masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
-      </div>
-
       <div class="showinfos">
-      <div class="showtext">
+        <div class="colonne showimage">
+          <%= cl_image_tag @masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
 
-      <h1><b><%= @masterpiece.title %></b></h1>
-      <p><strong>Owner:</strong> <%= @users.find(@masterpiece.user_id).name %></p>
-      <p><strong>Description:</strong> <%= @masterpiece.description %></p>
-      <p><strong>Lolisation:</strong> <%= @masterpiece.address %></p>
-      <p><strong>Category:</strong> <%= @masterpiece.category %></p>
+        <div class="colonne">
+          <h1><b><%= @masterpiece.title %></b></h1>
+          <div class="infos grey">
+            <div>
+              <p><strong>By : </strong> <u><%= @users.find(@masterpiece.user_id).name %></u></p>
+            </div>
+            <div>
+              <p><%= @masterpiece.category %></p>
+            </div>
+          </div>
+          <div class="centerH">
+            <%= render "cardbooking", bookings: @bookings, users: @users, masterpiece: @masterpiece %>
+          </div>
 
+          <div class="displayinfos">
+            <div class="description">
+              <p><strong>Description:</strong> <%= @masterpiece.description %></p>
+            </div>
+            <div class="addressCont">
+              <div class="address">
+                <div class="addresseL"><p><i class="fa-solid fa-location-dot pin"></i></div>
+                <div class="addresseR"><%= @masterpiece.address %></p></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
-      <%= render "cardbooking", bookings: @bookings, users: @users, masterpiece: @masterpiece %>
-      </div>
-
+<%#
   <div class="btnback">
     <%= link_to 'Back to masterpieces', masterpieces_path, class: 'cardbookingbtn' %>
-  </div>
+<%#  </div>%>
 
 </div>
