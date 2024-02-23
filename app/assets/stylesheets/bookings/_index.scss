@@ -1,0 +1,99 @@
+.card-product {
+  overflow: hidden;
+  height: 300px;
+  background: white;
+  box-shadow: rgba(0,0,0,0.15) 0 2px 2px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  justify-content: space-between;
+  border: 1px solid #b8b8b8;
+}
+
+.card-product img {
+  height: 100%;
+  width: 900px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+.cards-booking {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+
+.notification {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+}
+
+.notification:hover {
+  border: 1px solid rgb(235,235,235);
+}
+
+.notification .notification-content {
+  flex-grow: 1;
+  padding: 0 8px;
+}
+
+.notification p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.notification small {
+  color: #999999;
+}
+.notification .notification-actions {
+  opacity: 0;
+  transition: ease .3s;
+}
+
+.notification:hover .notification-actions {
+  opacity: 1;
+}
+
+.notification .notification-actions a {
+  color: #999999;
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 8px;
+}
+
+.notification .notification-actions button {
+  color: #999999;
+  font-size: 14px;
+  text-decoration: none;
+  border: none;
+  background-color: white;
+}
+
+.notification .notification-actions button:hover {
+  color: #555555;
+}
+
+.notification .notification-actions a:hover {
+  color: #555555;
+}
