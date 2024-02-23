@@ -54,5 +54,28 @@
         <% end %>
       </div>
 
+      <h2 class="my-5">Budget location</h2>
+        <div>
+          <% total_dep = 0 %>
+          <%# ici @bookings : les résa de l'utilisateur actuel %>
+          <% @bookings.each do |booking|  %>
+            <% total_dep += booking.total_amount%>
+          <%end%>
+          <p> Total dépensé: <%= total_dep %> </p>
+
+          <% total_gag = 0 %>
+          <%@masterpieces.each do |masterpiece|
+            if masterpiece.user_id == @user.id
+              @bookings_all.each do |booking|
+                if booking.masterpiece_id == masterpiece.id
+                  total_gag += booking.total_amount
+                end
+              end
+            end
+          end
+          %>
+          <p> Total gagné: <%= total_gag %> </p>
+        </div>
+
     </div>
   </div>

@@ -4,11 +4,11 @@ class BookingsController < ApplicationController
     @user = current_user
     @users = User.all
     @masterpieces = Masterpiece.all
-    bookings = Booking.all
+    @bookings_all = Booking.all
     @bookings = []
     # je prends que les bookings qui correspondent à mon user, et je passe
     # uniquement cette liste à la vue
-    bookings.each do |booking|
+    @bookings_all.each do |booking|
       if booking.user_id == @user.id
         @bookings << booking
       end
