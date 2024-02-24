@@ -28,14 +28,13 @@
     </div>
   </div>
 
-
-    <div class="dots-container">
+  <div class="dots-container">
       <span class="dot" data-index="0"></span>
       <span class="dot" data-index="1"></span>
       <span class="dot" data-index="2"></span>
       <span class="dot" data-index="3"></span>
-    </div>
-  </section>
+  </div>
+</section>
 
   <section>
     <div class="show-list">
@@ -48,26 +47,13 @@
           <a href="..." class="secondary-btn">Découvrir la collection</a>
         </div>
       </div>
-
-      <div class="elements">
-        <div class="col">
-        <ul class="list-group">
-          <% @masterpieces.each do |masterpiece|  %>
-            <li class="list-group-item mt-3">
-              <%= link_to masterpiece.title, masterpiece %>
-              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
-            </li>
-          <% end  %>
-          </ul>
-        </div>
-      </div>
-    </div>
+   </div>
   </section>
 
   <section>
     <div class="form">
       <h2 class="form-title">Trouver une œuvre à louer rapidement</h2>
-      <div class="searchdesc">
+
         <%= simple_form_for :search, method: :get do |f| %>
           <div class="searchdesc">
             <%= f.input :search, label: "Search by title, description or address", required: false %>
@@ -75,70 +61,35 @@
                 input_html: { type: :number, name: :max_price, value: params.dig(:max_price) } %>
             <%= f.input :category, label: "Category", required: false, collection: Masterpiece::AUTHORIZED_CATEGORIES,
                 include_blank: true, selected: params.dig(:category), input_html: { name: :category } %>
-            <%= f.input :start_at, label: "Début de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
-            <%= f.input :end_at, label: "Fin de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
+            <%= f.input :start_at, label: "Start from", as: :string, input_html: { data: { controller: "datepicker" } } %>
+            <%= f.input :end_at, label: "To", as: :string, input_html: { data: { controller: "datepicker" } } %>
             <%= f.submit "Search", class: 'main-btn' %>
-          </div>
-        </div>
+            </div>
         <% end %>
+    </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Voici la liste des oeuvres</h1>
-      <ul class="list-group">
-        <% @masterpieces.each do |masterpiece|  %>
-          <li class="list-group-item mt-3">
-            <%#<% if (params[:start_at].present? && params[:end_at].present?)  %>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1>Voici la liste des oeuvres</h1>
+          <ul class="list-group">
+            <% @masterpieces.each do |masterpiece|  %>
+              <li class="list-group-item mt-3">
+                <% if (params[:search].present? && params[:search][:start_at].present? && params[:search][:end_at].present?)  %>
+                  <%= link_to masterpiece.title, masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) %>
+                  <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+                <% else %>
+                  <%= link_to masterpiece.title, masterpiece_path(masterpiece) %>
+                  <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
+              </li>
+            <% end  %>
+          </ul>
 
-            <% if (params[:search].present? && params[:search][:start_at].present? && params[:search][:end_at].present?)  %>
-              <%= link_to masterpiece.title, masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) %>
-              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
-            <% else %>
-              <%= link_to masterpiece.title, masterpiece_path(masterpiece) %>
-              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
-            <% end %>
-          </li>
-        <% end  %>
-      </ul>
-      
+        </div>
+      </div>
     </div>
   </section>
-
-
-  <div class="searchdate">
-    <%# <%= simple_form_for :search, method: :get, defaults: { required: false } do |f| %>
-    <%# <%= f.start_at :title, label: "Start at", input_html: { type: :date, name: :start_at, value: params.dig(:start_at) } %>
-    <%# <%= f.end_at :description, label: "End at", input_html: { type: :date, name: :end_at, value: params.dig(:end_at) } %>
-    <%# <% end %>
-  </div>
-
-    <section>
-    <div class="show-list">
-      <div class="head">
-        <div class="text-content">
-          <h3>Voici la liste des oeuvres</h3>
-          <p>Découvrez les œuvres que nos clients adorent</p>
-        </div>
-        <div class="link">
-          <a href="..." class="secondary-btn">Découvrir la collection</a>
-        </div>
-      </div>
-
-      <div class="elements">
-        <div class="col">
-        <ul class="list-group">
-          <% @masterpieces.each do |masterpiece|  %>
-            <li class="list-group-item mt-3">
-              <%= link_to masterpiece.title, masterpiece %>
-              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
-            </li>
-          <% end  %>
-          </ul>
-        </div>
-      </div>
-    </div>
-    </section>
 
   <section>
     <div class="nav-blocks">
@@ -168,8 +119,7 @@
         </div>
       </div>
     </div>
-    </section>
-
+  </section>
 
   <section>
     <div class="pre-footer"></div>
@@ -178,4 +128,3 @@
   <section>
     <div class="footer"></div>
   </section>
-</div>
