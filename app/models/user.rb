@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_many :masterpieces, dependent: :destroy
 
   validates :name, presence: true
+
+  # active storage :
+  has_one_attached :photo
 end

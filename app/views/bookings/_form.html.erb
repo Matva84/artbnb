@@ -1,14 +1,14 @@
   <%= simple_form_for [masterpiece, booking] do |f| %>
     <div class="form-group mt-3 ">
-      <%= f.input :start_at, label: "Début de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
+      <%= f.input :start_at, label: "Début de location", as: :string, input_html: { data: { controller: "datepicker" }, value: params[:booking_start_at]} %>
     </div>
 
     <div class="form-group mt-3">
-      <%= f.input :end_at, label: "Fin de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
+      <%= f.input :end_at, label: "Fin de location", as: :string, input_html: { data: { controller: "datepicker" }, value: params[:booking_end_at] } %>
     </div>
 
     <div class="form-group mt-3">
-      <%= f.submit 'Réserver', class: 'btn btn-primary' %>
+      <%= f.submit 'Réserver', class: 'btn btn-ghost' %>
     </div>
   <% end %>
 <%# on pourra prévoir ici un peu de js pour afficher le prix total en fonction du nombre de jours sélectionnés %>

@@ -1,26 +1,65 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Voici la liste des reservations de <%= @user.name%> </h1>
-      <ul class="list-group">
+      <h1 class="mt-5">Réservations </h1>
+        <div class="card-product my-5">
+            <div class="card-product-infos">
+              <h2>Découvrez les dernières tendances</h2>
+              <p>Il est temps de penser à votre futur intérieur.</p>
+              <%= link_to 'Lancer une recherche', root_path, class: 'btn btn-ghost mt-3' %>
+            </div>
+          <%= image_tag "paint-view.jpeg" %>
+        </div>
+
+      <h2 class="mt-5">En cours</h2>
+      <div class="cards-booking my-5">
         <% @bookings.each do |booking|  %>
-            <li class="list-group-item mt-3">
-            <%# je récupère les infos de la masterpiece faisant l'objet de la réservation %>
-              Titre : <%= @masterpieces.find(booking.masterpiece_id).title %>
-              <% proprio_id = @masterpieces.find(booking.masterpiece_id).user_id %>
-              Propriétaire : <%= @users.find(proprio_id).email %>
-              Montant : <%= booking.total_amount %>
-              Date de début : <%= booking.start_at %>
-              Date de fin : <%= booking.end_at %>
-              <%= link_to 'Annuler ma réservation', booking_path(booking.id), class: 'btn btn-info', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette réservation?"} %>
-              <div data-controller="toggle-booking-form" class="my-3">
-                <button data-action="click->toggle-booking-form#fire" class="btn btn-primary">Modifier ma réservation</button>
+        <% if booking.end_at.to_date >= Date.today %>
+        <div class="notification">
+          <%= cl_image_tag @masterpieces.find(booking.masterpiece_id).photo.key, class: "avatar-square" %>
+          <div class="notification-content">
+            <p><%= @masterpieces.find(booking.masterpiece_id).title %></p>
+            <% proprio_id = @masterpieces.find(booking.masterpiece_id).user_id %>
+            <p><small><%= @users.find(proprio_id).name %></small></p>
+            <p><small><%= booking.start_at.to_date %> - <%= booking.end_at.to_date %></small></p>
+          </div>
+          <div class="notification-actions">
+            <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, booking_path(booking.id), data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette réservation?"} %>
+            <div data-controller="toggle-booking-form" class="my-3">
+                <button data-action="click->toggle-booking-form#fire"><i class="fas fa-pencil-alt"></i></button>
                 <div data-toggle-booking-form-target="togglableElement" class="d-none">
                   <%= render "form", masterpiece: @masterpieces.find(booking.masterpiece_id), booking: booking %>
                 </div>
-              </div>
-            </li>
-        <% end  %>
-      </ul>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+
+      <h2>Précédentes</h2>
+      <div class="cards-booking my-5">
+        <% @bookings.each do |booking|  %>
+        <% if booking.end_at.to_date < Date.today %>
+        <div class="notification">
+          <%= cl_image_tag @masterpieces.find(booking.masterpiece_id).photo.key, class: "avatar-square" %>
+          <div class="notification-content">
+            <p><%= @masterpieces.find(booking.masterpiece_id).title %></p>
+            <% proprio_id = @masterpieces.find(booking.masterpiece_id).user_id %>
+            <p><small><%= @users.find(proprio_id).name %></small></p>
+            <p><small><%= booking.start_at.to_date %> - <%= booking.end_at.to_date %></small></p>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+
+            <div data-controller="toggle-booking-form" class="my-3 row justify-content-center">
+                <button class="btn btn-ghost my-3 w-25" data-action="click->toggle-booking-form#fire">Chiffre clé</button>
+                <div data-toggle-booking-form-target="togglableElement" class="d-none">
+                  <%= render "shared/amount", masterpieces: @masterpieces, bookings_user: @bookings, bookings_all: @bookings_all%>
+                </div>
+            </div>
+
     </div>
   </div>

@@ -29,7 +29,6 @@
   </div>
 
 
-
     <div class="dots-container">
       <span class="dot" data-index="0"></span>
       <span class="dot" data-index="1"></span>
@@ -82,6 +81,27 @@
           </div>
         </div>
         <% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Voici la liste des oeuvres</h1>
+      <ul class="list-group">
+        <% @masterpieces.each do |masterpiece|  %>
+          <li class="list-group-item mt-3">
+            <%#<% if (params[:start_at].present? && params[:end_at].present?)  %>
+
+            <% if (params[:search].present? && params[:search][:start_at].present? && params[:search][:end_at].present?)  %>
+              <%= link_to masterpiece.title, masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) %>
+              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+            <% else %>
+              <%= link_to masterpiece.title, masterpiece_path(masterpiece) %>
+              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+          </li>
+        <% end  %>
+      </ul>
+      
     </div>
   </section>
 

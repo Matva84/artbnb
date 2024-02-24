@@ -1,5 +1,5 @@
 .cardbooking {
-  width: 600px;
+  width: 100%;
   height: 275px;
   background-color: #f7f7f6;
   border: solid 1px hsl(0, 1%, 85%);
@@ -49,14 +49,33 @@
   color: white;
   background-color: black;
   font-size: medium;
-  padding: 10px 182px 10px 182px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-decoration: none;
   border-radius: 8px;
-  margin: 48px 48px 48px 48px;
+  margin: -24px 48px 24px 48px;
   border: black 1px solid;
+  padding-right: 30%;
+  padding-left: 30%;
 
   &:hover {
     background-color: #f7f7f6;
     color: black;
   }
+}
+.center {
+  display : flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-style: none;
+  font-size: 16px;
+}
+
+.inputadj {
+  display : flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 8px;
 }
