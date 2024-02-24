@@ -2,14 +2,14 @@ import { Controller } from "@hotwired/stimulus"
 import { Chart } from "chart.js";
 
 export default class extends Controller {
-  worldPopulation = {
-    "men": 504,
-    "women": 496
+  total_amounts = {
+    "Gain": 504,
+    "Dépense": 496
   };
 
   connect() {
-    const labels = Object.keys(this.worldPopulation);
-    const data = Object.values(this.worldPopulation);
+    const labels = Object.keys(this.total_amounts);
+    const data = Object.values(this.total_amounts);
 
     new Chart(
       this.element,
@@ -19,7 +19,7 @@ export default class extends Controller {
           labels: labels,
           datasets: [
             {
-              label: 'Gender Ratio',
+              label: 'Bilan',
               data: data,
               backgroundColor: [
                 'rgb(255, 99, 132)',
