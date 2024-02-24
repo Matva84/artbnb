@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Réservations </h1>
+      <h1 class="mt-5">Réservations </h1>
         <div class="card-product my-5">
             <div class="card-product-infos">
               <h2>Découvrez les dernières tendances</h2>
@@ -11,7 +11,7 @@
           <%= image_tag "paint-view.jpeg" %>
         </div>
 
-      <h2>En cours</h2>
+      <h2 class="mt-5">En cours</h2>
       <div class="cards-booking my-5">
         <% @bookings.each do |booking|  %>
         <% if booking.end_at.to_date >= Date.today %>
@@ -75,6 +75,10 @@
           end
           %>
           <p> Total gagné: <%= total_gag %> </p>
+        </div>
+        <div class="chart">
+          <canvas data-controller="amount-chart">
+          </canvas>
         </div>
 
     </div>
