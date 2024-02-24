@@ -12,27 +12,29 @@
 <%#  </div>
 <%#  <%= link_to 'I want to book it', new_masterpiece_booking_path(params[:id]), class: 'cardbookingbtn' %>
 <%#</div>%>
+<%#<form action="<%= url_for([@masterpiece, @booking]) %><%#" method="get">%>
+<%#<%= link_to 'I want to book it', new_masterpiece_booking_path(params[:id], start_at:params[:booking_start_at], end_at:params[:booking_end_at]), class: 'cardbookingbtn' %>
+
 
 <% today = Date.today %>
 <% tommorrow = Date.today + 1 %>
 <div class="cardbooking">
   <h2><b><%= @masterpiece.price %> €</b> per day </h1>
-  <form action="<%= url_for([@masterpiece, @booking]) %>" method="post">
+  <form action="<%= new_masterpiece_booking_path(params[:id], start_at:params[:booking_start_at], end_at:params[:booking_end_at]) %>" method="get">
   <div class="cardbookingdates">
     <div class="cardbookingselection_left">
       <h2><b>START FROM</b></h2>
       <div class="inputadj">
-        <input type="text" id="booking_start_at" name="booking[start_at]" size ="10" data-controller="datepicker" class ="center" placeholder="<%= today %>">
+        <input type="text" id="booking_start_at" name="booking_start_at" size ="10" data-controller="datepicker" class ="center" placeholder="<%= today %>" value = "<%= params[:start_at] %>">
       </div>
     </div>
     <div class="cardbookingselection_right">
       <h2><b>TO</b></h2>
       <div class="inputadj">
-        <input type="text" id="booking_end_at" name="booking[end_at]" size ="10" data-controller="datepicker" class ="center" placeholder= "<%= tommorrow %>">
+        <input type="text" id="booking_end_at" name="booking_end_at" size ="10" data-controller="datepicker" class ="center" placeholder= "<%= tommorrow %>" value = "<%= params[:end_at] %>">
       </div>
     </div>
   </div>
   <input type="submit" value="I want to book it" class="cardbookingbtn">
   </form>
-<%#  <%= link_to 'I want to book it', new_masterpiece_booking_path(params[:id]), class: 'cardbookingbtn' %>
 </div>

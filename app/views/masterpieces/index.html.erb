@@ -21,7 +21,7 @@
       <ul class="list-group">
         <% @masterpieces.each do |masterpiece|  %>
           <li class="list-group-item mt-3">
-            <%= link_to masterpiece.title, masterpiece %>
+            <%= link_to masterpiece.title, masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) %>
              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
           </li>
         <% end  %>
