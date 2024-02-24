@@ -1,18 +1,86 @@
+<section class="slider">
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1652766825080-88818e6509b6?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <div class="content">
+      <h2>A la recherche d’une oeuvre d’art ?<br>Optez pour la location</h2>
+      <p>Louez dés aujourd’hui et profitez l’espace, d’un moment, d’une création unique à contempler au quotidien.<br>Peinture, Dessin, Poster, Photographie, ... Découvrez les oeuvres de nos partenaires. </p>
+      <a href="#" class="main-btn" id="btn-slider">Découvrir la location</a>
+    </div>
+  </div>
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1576926241721-4b830531f667?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <div class="content">
+      <h2>Les posters vintages</h2>
+      <p>Notre sélection en haut de l’affiche ! Cartes du monde, posters graphiques et tableaux détonants... <br>Les possibilités sont infinies pour habiller et personnaliser vos murs.</p>
+      <a href="#" class="main-btn">J'explore la sélection</a>
+    </div>
+  </div>
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1652766825080-88818e6509b6?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <div class="content">
+      <h2>Les artistes du moment</h2>
+      <p>Des peintures vibrantes qui résonnent avec émotion, des oeuvres sur toile en passant par le le mouvement street art<br>notre collection vous invite à explorer les multiples facettes de l'expression artistique contemporaine</p>
+      <a href="#" class="main-btn">J'explore la sélection</a>
+    </div>
+  </div>
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1578926078640-668b1fb75403?q=80&w=2866&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <div class="content">
+      <h2>Les aquarelles</h2>
+      <p>Que ce soit pour égayer votre intérieur ou pour offrir un cadeau inoubliable, nos aquarelles sauront charmer <br>votre cœur et éveiller votre sensibilité artistique.</p>
+      <a href="#" class="main-btn">J'explore la sélection</a>
+    </div>
+  </div>
 
-<div class="searchdesc">
-      <%= simple_form_for :search, method: :get do |f| %>
-        <div class="searchdesc">
-          <%= f.input :search, label: "Search by title, description or address", required: false %>
-          <%= f.input :max_price, label: "Maximal price",required: false,
-              input_html: { type: :number,name: :max_price,value: params.dig(:max_price) } %>
-          <%= f.input :category, label: "Category",required: false, collection: Masterpiece::AUTHORIZED_CATEGORIES,
-              include_blank: true, selected: params.dig(:category), input_html: { name: :category } %>
-          <%= f.input :start_at, label: "Début de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
-          <%= f.input :end_at, label: "Fin de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
-          <%= f.submit "Search", class: 'btn btn-primary'%>
+
+    <div class="dots-container">
+      <span class="dot" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+      <span class="dot" data-index="3"></span>
+    </div>
+  </section>
+
+  <section>
+    <div class="show-list">
+      <div class="head">
+        <div class="text-content">
+          <h3>Voici la liste des oeuvres</h3>
+          <p>Découvrez les œuvres que nos clients adorent</p>
         </div>
-      <% end %>
-</div>
+        <div class="link">
+          <a href="..." class="secondary-btn">Découvrir la collection</a>
+        </div>
+      </div>
+
+      <div class="elements">
+        <div class="col">
+        <ul class="list-group">
+          <% @masterpieces.each do |masterpiece|  %>
+            <li class="list-group-item mt-3">
+              <%= link_to masterpiece.title, masterpiece %>
+              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+            </li>
+          <% end  %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="form">
+      <h2 class="form-title">Trouver une œuvre à louer rapidement</h2>
+      <div class="searchdesc">
+        <%= simple_form_for :search, method: :get do |f| %>
+          <div class="searchdesc">
+            <%= f.input :search, label: "Search by title, description or address", required: false %>
+            <%= f.input :max_price, label: "Maximal price", required: false,
+                input_html: { type: :number, name: :max_price, value: params.dig(:max_price) } %>
+            <%= f.input :category, label: "Category", required: false, collection: Masterpiece::AUTHORIZED_CATEGORIES,
+                include_blank: true, selected: params.dig(:category), input_html: { name: :category } %>
+            <%= f.input :start_at, label: "Début de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
+            <%= f.input :end_at, label: "Fin de location", as: :string, input_html: { data: { controller: "datepicker" } } %>
+            <%= f.submit "Search", class: 'main-btn' %>
+          </div>
+        </div>
+        <% end %>
 
 <div class="container">
   <div class="row">
@@ -33,6 +101,81 @@
           </li>
         <% end  %>
       </ul>
+      
     </div>
+  </section>
+
+
+  <div class="searchdate">
+    <%# <%= simple_form_for :search, method: :get, defaults: { required: false } do |f| %>
+    <%# <%= f.start_at :title, label: "Start at", input_html: { type: :date, name: :start_at, value: params.dig(:start_at) } %>
+    <%# <%= f.end_at :description, label: "End at", input_html: { type: :date, name: :end_at, value: params.dig(:end_at) } %>
+    <%# <% end %>
   </div>
+
+    <section>
+    <div class="show-list">
+      <div class="head">
+        <div class="text-content">
+          <h3>Voici la liste des oeuvres</h3>
+          <p>Découvrez les œuvres que nos clients adorent</p>
+        </div>
+        <div class="link">
+          <a href="..." class="secondary-btn">Découvrir la collection</a>
+        </div>
+      </div>
+
+      <div class="elements">
+        <div class="col">
+        <ul class="list-group">
+          <% @masterpieces.each do |masterpiece|  %>
+            <li class="list-group-item mt-3">
+              <%= link_to masterpiece.title, masterpiece %>
+              <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+            </li>
+          <% end  %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </section>
+
+  <section>
+    <div class="nav-blocks">
+      <div class="left-blocks">
+        <div class="nav-block__item">
+          <h3>Peintures</h3>
+          <img src="https://images.unsplash.com/photo-1548685913-70235e21eab2?q=80&w=2889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bloc-1">
+        </div>
+        <div class="nav-block__item">
+          <h3>Photographies</h3>
+          <img src="https://images.unsplash.com/photo-1519668752166-ebdbfe986afd?q=80&w=2468&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+      </div>
+
+      <div class="right-blocks">
+        <div class="nav-block__item">
+          <h3>Affiches & Posters</h3>
+          <img src="https://www.fleux.com/cdn/shop/products/aperol-negroni_1200x.jpg?v=1675471292" alt="">
+        </div>
+        <div class="nav-block__item">
+          <h3>Dessins & Illustrations</h3>
+          <img src="https://images.unsplash.com/photo-1589637458063-7b054f0c18ab?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+        <div class="nav-block__item">
+          <h3>Artistes</h3>
+          <img src="https://images.unsplash.com/photo-1500628550463-c8881a54d4d4?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+      </div>
+    </div>
+    </section>
+
+
+  <section>
+    <div class="pre-footer"></div>
+  </section>
+
+  <section>
+    <div class="footer"></div>
+  </section>
 </div>
