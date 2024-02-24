@@ -3,7 +3,7 @@ class Masterpiece < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true
   # j'ai proposé 3 types d'oeuvre : peinture, sculture, photo

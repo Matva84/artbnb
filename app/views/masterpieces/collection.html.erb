@@ -11,6 +11,9 @@
       <ul class="list-group">
         <% @masterpieces.each do |masterpiece|  %>
           <li class="list-group-item mt-3">
+            <a href="#" class="avatar">
+              <%= cl_image_tag masterpiece.photo.key, class: "avatar" %>
+            </a>
             <%= link_to masterpiece.title, masterpiece %>
             <div data-controller="toggle-reservation" class="my-3">
               <button data-action="click->toggle-reservation#fire" class="btn btn-outline-primary">Voir les réservations programmées</button>

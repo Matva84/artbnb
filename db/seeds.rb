@@ -1,12 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 require "open-uri"
 require "faker"
 
@@ -37,12 +28,6 @@ urls = ["https://media.artsper.com/artwork/652392_1_l.jpg",
 list_of_users = []
 list_of_masterpieces = []
 list_of_categories = ["Paint", "Sculpture", "Photo"]
-list_of_titles = [Faker::GreekPhilosophers.name,
-  Faker::Games::Heroes.name,
-  Faker::Music::RockBand.name,
-  Faker::Music::Hiphop.groups,
-  Faker::Music::Prince.album
-]
 
 puts "Cleaning databases..."
 Booking.destroy_all
@@ -50,16 +35,31 @@ Masterpiece.destroy_all
 User.destroy_all
 
 puts "Creating users..."
-  user_bq = User.create(email: "bq@email.com", password: "password", name: "Benoit")
+  file = URI.open("https://kitt.lewagon.com/placeholder/users/benoit-mint")
+  user_bq = User.new(email: "bq@email.com", password: "password", name: "Benoit")
+  user_bq.photo.attach(io: file, filename: "benoit.png", content_type: "image/png")
+  user_bq.save!
   list_of_users << user_bq
-  user_mv = User.create(email: "mv@email.com", password: "password", name: "Mathieu")
+
+  file = URI.open("https://kitt.lewagon.com/placeholder/users/matva84")
+  user_mv = User.new(email: "mv@email.com", password: "password", name: "Mathieu")
+  user_mv.photo.attach(io: file, filename: "mathieu.png", content_type: "image/png")
+  user_mv.save!
   list_of_users << user_mv
-  user_gl = User.create(email: "gl@email.com", password: "password", name: "Guillaume")
+
+  file = URI.open("https://kitt.lewagon.com/placeholder/users/guillaumelmt")
+  user_gl = User.new(email: "gl@email.com", password: "password", name: "Guillaume")
+  user_gl.photo.attach(io: file, filename: "guillaume.png", content_type: "image/png")
+  user_gl.save!
   list_of_users << user_gl
-  user_fl = User.create(email: "fl@email.com", password: "password", name: "François")
+
+  file = URI.open("https://kitt.lewagon.com/placeholder/users/franlorf1050")
+  user_fl = User.new(email: "fl@email.com", password: "password", name: "François")
+  user_fl.photo.attach(io: file, filename: "francois.png", content_type: "image/png")
+  user_fl.save!
   list_of_users << user_fl
 
-  20.times do
+  10.times do
     user = User.create(email: Faker::Internet.email, password: "password", name: Faker::Name.name)
     list_of_users << user
   end
@@ -126,11 +126,10 @@ puts "Creating masterpieces..."
   masterpiece10.photo.attach(io: file, filename: "alfons.png", content_type: "image/png")
   masterpiece10.save!
 
-  30.times do
+  10.times do
     file = URI.open(urls[rand(0..(urls.count-1))])
-    title = "#{list_of_titles[rand(0..(list_of_titles.count-1))]}#{rand(0..1000).to_s}"
-    masterpiece = Masterpiece.new(title: title, description: Faker::Movies::HarryPotter.quote, price: rand(1000..10000), address: Faker::Address.full_address, category: list_of_categories[rand(0..(list_of_categories.count-1))], user_id: list_of_users[rand(0..(User.count-1))].id)
-    masterpiece.photo.attach(io: file, filename: "#{title}.png", content_type: "image/png")
+    masterpiece = Masterpiece.new(title: Faker::Fantasy::Tolkien.character, description: Faker::Movies::HarryPotter.quote, price: rand(1000..10000), address: Faker::Address.full_address, category: list_of_categories[rand(0..(list_of_categories.count-1))], user_id: list_of_users[rand(0..(User.count-1))].id)
+    masterpiece.photo.attach(io: file, filename: "#{masterpiece.title}.png", content_type: "image/png")
     masterpiece.save!
     list_of_masterpieces << masterpiece
   end
@@ -170,8 +169,11 @@ puts "Creating bookings..."
   booking8 = Booking.create(user_id: user_bq.id,masterpiece_id: masterpiece8.id, start_at: Date.today, end_at: Date.today+rand(5..30), total_amount: rand(1000..10000))
   booking8.save!
 
+  booking_users = [user_bq, user_fl, user_gl, user_mv]
   10.times do
-    booking = Booking.create(user_id: list_of_users[rand(0..(list_of_users.count-1))].id, masterpiece_id: list_of_masterpieces[rand(0..(list_of_masterpieces.count-1))].id, start_at: Date.today-rand(5..300), end_at: Date.today+rand(5..300), total_amount: rand(1000..10000))
+    start_at = Date.today + rand(-100..50)
+    end_at = start_at + 10
+    booking = Booking.create(user_id: booking_users[rand(0..(booking_users.count-1))].id, masterpiece_id: list_of_masterpieces[rand(0..(list_of_masterpieces.count-1))].id, start_at: start_at, end_at: end_at, total_amount: rand(1000..10000))
     booking.save!
   end
 
