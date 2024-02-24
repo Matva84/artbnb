@@ -53,7 +53,7 @@
   padding-bottom: 10px;
   text-decoration: none;
   border-radius: 8px;
-  margin: 48px 48px 48px 48px;
+  margin: -24px 48px 24px 48px;
   border: black 1px solid;
   padding-right: 30%;
   padding-left: 30%;
@@ -62,4 +62,20 @@
     background-color: #f7f7f6;
     color: black;
   }
+}
+.center {
+  display : flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-style: none;
+  font-size: 16px;
+}
+
+.inputadj {
+  display : flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 8px;
 }
