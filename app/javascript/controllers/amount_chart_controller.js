@@ -2,14 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 import { Chart } from "chart.js";
 
 export default class extends Controller {
-  total_amounts = {
-    "Gain": 504,
-    "Dépense": 496
-  };
+  static targets = ["totalDep", "totalGag"]
 
   connect() {
-    const labels = Object.keys(this.total_amounts);
-    const data = Object.values(this.total_amounts);
+    const labels = ["Gain", "Dépense"]
+    const data = [this.totalGagTarget.dataset.value, this.totalDepTarget.dataset.value]
 
     new Chart(
       this.element,
@@ -22,9 +19,8 @@ export default class extends Controller {
               label: 'Bilan',
               data: data,
               backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
+                'rgb(103, 130, 100)',
+                'rgb(130, 77, 77)',
               ],
               hoverOffset: 4
             }
