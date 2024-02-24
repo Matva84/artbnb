@@ -1,0 +1,32 @@
+      <div class="row justify-content-center">
+          <div class="card-amount mb-5">
+          <div class="chart">
+            <canvas data-controller="amount-chart">
+
+          <% total_dep = 0 %>
+          <%# ici @bookings : les résa de l'utilisateur actuel %>
+          <% bookings_user.each do |booking|  %>
+            <% total_dep += booking.total_amount%>
+          <%end%>
+          <div data-amount-chart-target="totalDep" data-value="<%= total_dep %>"></div>
+          <% total_gag = 0 %>
+          <%masterpieces.each do |masterpiece|
+            if masterpiece.user_id == @user.id
+              bookings_all.each do |booking|
+                if booking.masterpiece_id == masterpiece.id
+                  total_gag += booking.total_amount
+                end
+              end
+            end
+          end
+          %>
+          <div data-amount-chart-target="totalGag" data-value="<%= total_gag %>"></div>
+
+            </canvas>
+          </div>
+          <div class="card-amount-infos">
+            <p><strong>Gain: </strong><%= total_gag %> €</p>
+            <p><strong>Dépense: </strong><%= total_dep %> €</p>
+          </div>
+        </div>
+      </div>
