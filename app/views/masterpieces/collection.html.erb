@@ -1,31 +1,48 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2>Voici la liste des oeuvres publiées de <%= @user.name %> </h2>
-      <div data-controller="toggle-add-masterpiece" class="my-3">
-        <button data-action="click->toggle-add-masterpiece#fire" class="btn btn-primary">Publier une annonce</button>
+      <h1 class="mt-5">Oeuvres publiées par <%= @user.name %> </h1>
+
+        <div class="card-product my-5">
+            <div class="card-product-infos">
+              <h2>Analysez les réservations de vos Oeuvres</h2>
+              <p>Vous avez d'autres oeuvres à proposer? Alors publier une nouvelle annonce!</p>
+            </div>
+          <%= image_tag "beau-graffiti-cubisme.jpg" %>
+        </div>
+
+      <div data-controller="toggle-add-masterpiece" class="my-5">
+        <button data-action="click->toggle-add-masterpiece#fire" class="btn btn-ghost">Publier une annonce</button>
         <div data-toggle-add-masterpiece-target="togglableElement" class="d-none">
           <%= render "form", masterpiece: @new_masterpiece %>
         </div>
       </div>
       <ul class="list-group">
-        <% @masterpieces.each do |masterpiece|  %>
-          <li class="list-group-item mt-3">
-            <a href="#" class="avatar">
-              <%= cl_image_tag masterpiece.photo.key, class: "avatar" %>
-            </a>
-            <%= link_to masterpiece.title, masterpiece %>
-            <div data-controller="toggle-reservation" class="my-3">
-              <button data-action="click->toggle-reservation#fire" class="btn btn-outline-primary">Voir les réservations programmées</button>
-              <div data-toggle-reservation-target="togglableElement" class="d-none">
-                <%= render "booking", bookings: @bookings, users: @users, masterpiece: masterpiece %>
+        <% @masterpieces.in_groups_of(2, false) do |group| %>
+          <div class="row">
+            <% group.each do |masterpiece| %>
+              <div class="col-md-6">
+                <li class="list-group-item mt-5">
+                  <div class="item">
+                    <div class="image">
+                      <%= cl_image_tag masterpiece.photo.key, class: "avatar" %>
+                    </div>
+                    <div class="info">
+                      <%= link_to masterpiece.title, masterpiece, class: 'masterpiece-title' %>
+                      <div data-controller="toggle-reservation" class="my-3">
+                        <button data-action="click->toggle-reservation#fire" class="btn btn-outline-primary">Voir les réservations programmées</button>
+                        <div data-toggle-reservation-target="togglableElement" class="d-none container-fluid">
+                          <%= render "booking", bookings: @bookings, users: @users, masterpiece: masterpiece %>
+                        </div>
+                      </div>
+                      <%= link_to 'Supprimer annonce', masterpiece_path(masterpiece.id), class: 'btn btn-info my-5', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
+                    </div>
+                  </div>
+                </li>
               </div>
-            </div>
-            <div>
-              <%= link_to 'Supprimer annonce', masterpiece_path(masterpiece.id), class: 'btn btn-info my-3', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
-            </div>
-          </li>
-        <% end  %>
+            <% end %>
+          </div>
+        <% end %>
       </ul>
     </div>
   </div>
