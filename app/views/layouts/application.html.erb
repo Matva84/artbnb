@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  </head>
+    <%= javascript_include_tag 'slider' %>  </head>
 
   <body><%= render "shared/navbar" %>
   <%= render "shared/flashes" %>

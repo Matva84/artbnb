@@ -1,28 +1,220 @@
 // Specific CSS for your home-page
 
-.searchtypeofcategory {
-  display: flex;
-  flex-direction: row;
-  gap: 10%;
-  padding: 10px 20%;
-
-  .form-group {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
+.margin-content {
+  width: 100%;
+  padding-right: 36px;
+  padding-left: 36px;
 }
 
-.search {
-  display: flex;
+section {
+  margin-bottom: 60px;
 }
 
-.hidden {
+///////* SLIDER *///////
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide {
+  width: 100%;
+  height: 700px;
   display: none;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
 }
 
-.searchdesc {
-  padding: 10px 20%;
+.slide:first-child {
+  display: block;
+}
+
+
+.content {
+  position: absolute;
+  top: 70%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  color: white; /* Couleur du texte, pour un meilleur contraste avec l'image de fond */
+}
+
+h2 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+p {
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.dots-container {
+  z-index: 1;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 10px 0;
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 8px;
+  gap: 5px;
+  background-color: rgb(188, 188, 188); /* Couleur des points légèrement transparente */
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: black; /* Couleur des points pleinement visible */
+}
+
+///////* FORM *///////
+
+.form {
+  width: 50%; /* Ajustez la largeur du formulaire selon vos besoins */
+  margin: 0 auto;
+}
+
+/* Champs  */
+.form input[type="text"],
+.form input[type="number"],
+.form select,
+.form input[type="date"],
+.form input[type="submit"] {
+  width: 100%; /* Ajustez la largeur des champs en fonction de la largeur du formulaire et de la marge interne */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+.form-title {
+  text-align: center;
+}
+
+
+
+///////* BLOCS CATÉGORIES *///////
+
+.slider {
+  margin-bottom: 0px;
+}
+
+.nav-blocks {
+  display: flex;
+  gap: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.left-blocks,
+.right-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  align-items: stretch;
+  max-height: 800px;
+}
+
+.left-blocks .nav-block__item {
+  height: calc(800px / 2);
+}
+
+.right-blocks .nav-block__item {
+  height: calc((800px - 20px) / 3);
+}
+
+.nav-block__item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  height: auto;
+  position: relative;
+}
+
+.nav-block__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  overflow: hidden;
+  filter: brightness(90%);
+}
+
+.nav-block__item h3 {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  text-shadow: 1px 5px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: calc(100% - 40px);
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+body {
+  background-color: white;
+}
+
+///////* SHOW LIST *///////
+
+.show-list {
+  background-color: #F8F4E9;
+}
+
+.head {
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.text-content h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.text-content p {
+  margin-bottom: 0px;
 }
 
 body {
