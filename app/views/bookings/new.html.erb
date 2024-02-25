@@ -1,7 +1,17 @@
-<div class="container">
-  <h2>Réserver votre <%= @masterpiece.title %> </h2>
+<div class="container centerContainer ">
+  <div class="logForm">
 
+  <div>
+  <h2>Want to book <%= @masterpiece.title %> ?</h2>
+  </div>
+
+  <div>
   <%= render "form", masterpiece: @masterpiece, booking: @booking %>
+  </div>
 
-  <%= link_to 'Retour à l\'oeuvre', masterpiece_path(@masterpiece.id), class: 'btn btn-secondary mt-3' %>
+  <div class="form-group mt-3">
+  <%= link_to 'Back to Artwork', masterpiece_path(@masterpiece.id), class: 'btnSubmit4' %>
+  </div>
+
 </div>
+  </div>
