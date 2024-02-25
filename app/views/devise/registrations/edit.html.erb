@@ -1,6 +1,5 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 mb-3">
+<div class="container centerContainerLarge">
+  <div class="logForm">
 
 <h2>Edit profil </h2>
 
@@ -8,38 +7,59 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <div class="emailpwd">
+      <div class="email_left leftaligned">
     <%= f.input :name %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :email, required: true, autofocus: true %>
+      </div>
+
+      <div class="pwd_right">
+        <%= f.input :email, required: true, autofocus: true %>
+      </div>
+      </div>
+      </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-  </div>
+    <div class="form-inputs">
+    <div class="emailpwd">
+      <div class="email_left leftaligned">
+        <%= f.input :password,hint: "leave it blank if you don't want to change it",required: false,input_html: { autocomplete: "new-password" } %>
+      </div>
+      <div class="pwd_right">
+        <%= f.input :password_confirmation,required: false,input_html: { autocomplete: "new-password" } %>
+      </div>
+    </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <div class="form-inputs">
+    <div class="emailpwd">
+      <div class="email_left leftaligned">
+        <%= f.input :current_password,hint: "we need your current password to confirm your changes",required: true,input_html: { autocomplete: "current-password" } %>
+      </div>
+      <div class="pwd_right">
+        <%= f.input :photo, as: :file %>
+      </div>
+    </div>
+    </div>
+
+
+  <div class="form-actions btnSubmit3">
+    <%= f.button :submit, "Update"%>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<div>
+  <form action="<%= registration_path(resource_name) %>" accept-charset="UTF-8" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="Cancel my account" data-confirm="Are you sure?" data-turbo-confirm="Are you sure?" data-disable-with="Processing..." class="form-actions btnSubmit4">
+  </form>
+</div>
 
-<div><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
 <%= link_to "Back", :back %>
 
     </div>
   </div>
-</div>

@@ -28,7 +28,19 @@
   justify-content: flex-start;
   align-items: center;
   margin-top: 100px;
-  height: 650px;
+  height: 750px;
+  width: 600px;
+  background-color: #f5f5f5;
+  border: solid 1px hsl(0, 1%, 85%);
+  border-radius: 16px;
+}
+.centerContainerLarge {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 100px;
+  height: 1000px;
   width: 600px;
   background-color: #f5f5f5;
   border: solid 1px hsl(0, 1%, 85%);
@@ -134,6 +146,42 @@
     color: black;
   }
 }
+.btnSubmit3 {
+  color: white;
+  font-size: medium;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  margin: 24px 48px 24px 48px;
+  padding-right: 35%;
+  padding-left: 35%;
+
+  &:hover {
+    border: black 1px solid;
+    border-radius: 8px;
+  }
+}
+.btnSubmit4 {
+  color: black;
+  font-size: medium;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  margin: 24px 48px 24px 48px;
+  padding-right: 29%;
+  padding-left: 29%;
+  border: black 0px solid;
+  border-radius: 8px;
+  background-color: #f7f7f6;
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  &:hover {
+    border: black 1px solid;
+    border-radius: 8px;
+  }
+}
+
 .btnSubmitSmall {
   color: white;
   background-color: black;

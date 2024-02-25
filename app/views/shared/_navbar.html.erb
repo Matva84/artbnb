@@ -15,7 +15,7 @@
           <div class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa-solid fa-bars m-2"></i>
-          <%#  <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end mt-4" aria-labelledby="navbarDropdown">
               <%= link_to "My bookings", bookings_path, class: "nav-link" %>
