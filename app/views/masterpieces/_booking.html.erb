@@ -3,13 +3,13 @@
         <% bookings.each do |booking|  %>
           <% if booking.masterpiece_id == masterpiece.id %>
             <li class="list-group-item">
-              <p class="mb-2">Locataire : <%= users.find(booking.user_id).name %></p>
+              <p class="mb-2">Tenant : <%= users.find(booking.user_id).name %></p>
               <p class="mb-2">Contact : <%= users.find(booking.user_id).email %></p>
-              <p class="mb-2">Montant : <%= booking.total_amount %></p>
-              <p class="mb-2">Début : <%= booking.start_at.to_date %></p>
-              <p class="mb-2">Fin : <%= booking.end_at.to_date %></p>
+              <p class="mb-2">Price : <%= booking.total_amount %></p>
+              <p class="mb-2">Start from : <%= booking.start_at.to_date %></p>
+              <p class="mb-2">To : <%= booking.end_at.to_date %></p>
             </li>
-          <%= link_to 'Annuler réservation', booking_path(booking.id), class: 'btn btn-ghost mt-3', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette réservation?"} %>
+          <%= link_to 'Cancel booking', booking_path(booking.id), class: 'btn btn-ghost mt-3', data: {turbo_method: :delete, turbo_confirm: "Do you want to cancel this booking?"} %>
           <% end  %>
         <% end  %>
       </ul>
