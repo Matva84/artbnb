@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1 class="mt-5">Réservations </h1>
+      <h1 class="mt-5">Bookings </h1>
         <div class="card-product my-5">
             <div class="card-product-infos">
-              <h2>Découvrez les dernières tendances</h2>
-              <p>Il est temps de penser à votre futur intérieur.</p>
-              <%= link_to 'Lancer une recherche', root_path, class: 'btn btn-ghost mt-3' %>
+              <h2>Discover the latest trends</h2>
+              <p>It's time to think about your future interior.</p>
+              <%= link_to 'Discover', root_path, class: 'btn btn-ghost mt-3' %>
             </div>
           <%= image_tag "paint-view.jpeg" %>
         </div>
 
-      <h2 class="mt-5">En cours</h2>
+      <h2 class="mt-5">Pending</h2>
       <div class="cards-booking my-5">
         <% @bookings.each do |booking|  %>
         <% if booking.end_at.to_date >= Date.today %>
@@ -37,7 +37,7 @@
         <% end %>
       </div>
 
-      <h2>Précédentes</h2>
+      <h2>Previous</h2>
       <div class="cards-booking my-5">
         <% @bookings.each do |booking|  %>
         <% if booking.end_at.to_date < Date.today %>
@@ -55,7 +55,7 @@
       </div>
 
             <div data-controller="toggle-booking-form" class="my-3 row justify-content-center">
-                <button class="btn btn-ghost my-3 w-25" data-action="click->toggle-booking-form#fire">Chiffre clé</button>
+                <button class="btn btn-ghost my-3 w-25" data-action="click->toggle-booking-form#fire">Key statistics</button>
                 <div data-toggle-booking-form-target="togglableElement" class="d-none">
                   <%= render "shared/amount", masterpieces: @masterpieces, bookings_user: @bookings, bookings_all: @bookings_all%>
                 </div>

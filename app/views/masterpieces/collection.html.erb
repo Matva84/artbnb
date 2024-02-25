@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row my-5">
     <div class="col">
-      <h1 class="mt-3">Annonces</h1>
+      <h1 class="mt-3">Listings</h1>
 
       <div data-controller="toggle-add-masterpiece" class="my-5">
-        <button data-action="click->toggle-add-masterpiece#fire" class="btn btn-ghost">Publier une annonce</button>
+        <button data-action="click->toggle-add-masterpiece#fire" class="btn btn-ghost">Publish a new artwork</button>
         <div data-toggle-add-masterpiece-target="togglableElement" class="d-none">
           <%= render "form", masterpiece: @new_masterpiece %>
         </div>
@@ -12,8 +12,8 @@
 
         <div class="card-product mb-5">
             <div class="card-product-infos">
-              <h2>Analysez les réservations de vos Oeuvres</h2>
-              <p>Vous avez d'autres oeuvres à proposer? Alors publiez une nouvelle annonce!</p>
+              <h2>Review the reservations for your art pieces</h2>
+              <p>Do you have more artworks to offer? Then, post a new listing!</p>
             </div>
           <%= image_tag "beau-graffiti-cubisme.jpg" %>
         </div>
@@ -24,12 +24,12 @@
           <%= cl_image_tag masterpiece.photo.key, class: "avatar-large" %>
           <div class="user-masterpiece-content">
             <p><%= masterpiece.title%></p>
-            <p><small>Réservation en cours : <%=masterpiece.bookings.count%> </small></p>
+            <p><small>Booking in progress : <%=masterpiece.bookings.count%> </small></p>
           </div>
           <div class="user-masterpiece-actions">
-            <%= link_to "Supprimer", masterpiece_path(masterpiece.id), class: 'btn btn-ghost', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
+            <%= link_to "Cancel", masterpiece_path(masterpiece.id), class: 'btn btn-ghost', data: {turbo_method: :delete, turbo_confirm: "Do you really want to cancel this artwork?"} %>
             <button type="button" class="btn btn-ghost mt-3" data-bs-toggle="modal" data-bs-target="#myModal">
-              Réservations
+              Bookings
             </button>
           </div>
 
@@ -40,7 +40,7 @@
                         <%= render "booking", bookings: @bookings, users: @users, masterpiece: masterpiece %>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Fermer</button>
+                      <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>
