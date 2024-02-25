@@ -1,14 +1,16 @@
+    <div class="container-fluid">
       <ul class="list-group">
         <% bookings.each do |booking|  %>
           <% if booking.masterpiece_id == masterpiece.id %>
             <li class="list-group-item mt-3">
-              Locataire : <%= users.find(booking.user_id).name %>
-              Contact : <%= users.find(booking.user_id).email %>
-              Montant : <%= booking.total_amount %>
-              Date de début : <%= booking.start_at %>
-              Date de fin : <%= booking.end_at %>
+              <p>Locataire : <%= users.find(booking.user_id).name %></p>
+              <p>Contact : <%= users.find(booking.user_id).email %></p>
+              <p>Montant : <%= booking.total_amount %></p>
+              <p>Date de début : <%= booking.start_at %></p>
+              <p>Date de fin : <%= booking.end_at %></p>
               <%= link_to 'Annuler cette réservation', booking_path(booking.id), class: 'btn btn-warning', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette réservation?"} %>
             </li>
           <% end  %>
         <% end  %>
       </ul>
+</div>

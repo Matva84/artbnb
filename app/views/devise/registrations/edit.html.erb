@@ -29,16 +29,18 @@
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions btn btn-success mb-3">
     <%= f.button :submit, "Update" %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<div><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div class="mb-3">
+  <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-warning", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+</div>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, class: "btn btn-secondary mt-3" %>
 
     </div>
   </div>
