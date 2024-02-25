@@ -8,6 +8,7 @@
 
 section {
   margin-bottom: 60px;
+  height: auto;
 }
 
 ///////* SLIDER *///////
@@ -218,4 +219,110 @@ body {
 
 body {
   background-color: white;
+}
+
+///////* PRE-FOOTER *///////
+
+.pre-footer {
+  width: 100%;
+  height: 700px;
+  background-size: cover;
+  background-position: 100% 58%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 60px;
+}
+
+.pre-footer h2 {
+  padding: 90px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 86%; /* Réduire la hauteur du h2 pour laisser de l'espace aux icônes */
+  background: linear-gradient(0deg, #000, rgba(0, 0, 0, 0.1) 40%, transparent 60%);
+  text-align: center;
+  color: white;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 0px;
+
+}
+
+.pre-footer h3 {
+  color: white;
+  font-size: 16px;
+  font-weight: 220;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.reassurance-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+  background-color: black;
+  height: 100px;
+}
+
+.reassurance-item {
+  display: flex;
+  align-items: center;
+  margin: 0 20px; /* Marge horizontale entre les éléments */
+}
+
+.icon-pre-footer {
+  width: 30px; /* Ajuster la largeur des icônes selon les besoins */
+  height: auto; /* Ajuster la hauteur des icônes selon les besoins */
+  margin-right: 15px; /* Marge entre l'icône et le texte */;
+}
+
+.icon-pre-footer h3 {
+  margin-top: 10px; /* Espacement entre l'icône et le titre */
+  text-align: center; /* Centrer le texte */
+  margin-bottom: 0px;
+}
+
+///////* FOOTER *///////
+
+.footer {
+  background-color: #000000;
+  color: #fff;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 300px;
+  margin-bottom: 50px
+}
+
+.footer-section {
+  flex: 1;
+  width: 250px;
+}
+
+.footer-section h3 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.footer-section p {
+  margin: 5px 0;
+  font-family: Inter;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid #282828;
+  width: 80%;
+  font-weight: 200;
+  font-size: 12px;
 }
