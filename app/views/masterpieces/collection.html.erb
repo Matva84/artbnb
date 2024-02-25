@@ -1,15 +1,7 @@
 <div class="container">
-  <div class="row">
+  <div class="row my-5">
     <div class="col">
-      <h1 class="mt-5">Oeuvres publiées par <%= @user.name %> </h1>
-
-        <div class="card-product my-5">
-            <div class="card-product-infos">
-              <h2>Analysez les réservations de vos Oeuvres</h2>
-              <p>Vous avez d'autres oeuvres à proposer? Alors publier une nouvelle annonce!</p>
-            </div>
-          <%= image_tag "beau-graffiti-cubisme.jpg" %>
-        </div>
+      <h1 class="mt-3">Annonces</h1>
 
       <div data-controller="toggle-add-masterpiece" class="my-5">
         <button data-action="click->toggle-add-masterpiece#fire" class="btn btn-ghost">Publier une annonce</button>
@@ -17,33 +9,46 @@
           <%= render "form", masterpiece: @new_masterpiece %>
         </div>
       </div>
-      <ul class="list-group">
-        <% @masterpieces.in_groups_of(2, false) do |group| %>
-          <div class="row">
-            <% group.each do |masterpiece| %>
-              <div class="col-md-6">
-                <li class="list-group-item mt-5">
-                  <div class="item">
-                    <div class="image">
-                      <%= cl_image_tag masterpiece.photo.key, class: "avatar" %>
+
+        <div class="card-product mb-5">
+            <div class="card-product-infos">
+              <h2>Analysez les réservations de vos Oeuvres</h2>
+              <p>Vous avez d'autres oeuvres à proposer? Alors publiez une nouvelle annonce!</p>
+            </div>
+          <%= image_tag "beau-graffiti-cubisme.jpg" %>
+        </div>
+
+      <div class="user-cards-masterpiece my-5">
+      <% @masterpieces.each do |masterpiece|  %>
+        <div class="user-card-masterpiece mt-5">
+          <%= cl_image_tag masterpiece.photo.key, class: "avatar-large" %>
+          <div class="user-masterpiece-content">
+            <p><%= masterpiece.title%></p>
+            <p><small>Réservation en cours : <%=masterpiece.bookings.count%> </small></p>
+          </div>
+          <div class="user-masterpiece-actions">
+            <%= link_to "Supprimer", masterpiece_path(masterpiece.id), class: 'btn btn-ghost', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
+            <button type="button" class="btn btn-ghost mt-3" data-bs-toggle="modal" data-bs-target="#myModal">
+              Réservations
+            </button>
+          </div>
+
+              <div class="modal" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                        <%= render "booking", bookings: @bookings, users: @users, masterpiece: masterpiece %>
                     </div>
-                    <div class="info">
-                      <%= link_to masterpiece.title, masterpiece, class: 'masterpiece-title' %>
-                      <div data-controller="toggle-reservation" class="my-3">
-                        <button data-action="click->toggle-reservation#fire" class="btn btn-outline-primary">Voir les réservations programmées</button>
-                        <div data-toggle-reservation-target="togglableElement" class="d-none container-fluid">
-                          <%= render "booking", bookings: @bookings, users: @users, masterpiece: masterpiece %>
-                        </div>
-                      </div>
-                      <%= link_to 'Supprimer annonce', masterpiece_path(masterpiece.id), class: 'btn btn-info my-5', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Fermer</button>
                     </div>
                   </div>
-                </li>
+                </div>
               </div>
-            <% end %>
-          </div>
-        <% end %>
-      </ul>
+
+        </div>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>
