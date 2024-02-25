@@ -1,32 +1,54 @@
 <div class="container">
-  <div class="row">
+  <div class="row my-5">
     <div class="col">
-      <h2>Voici la liste des oeuvres publiées de <%= @user.name %> </h2>
-      <div data-controller="toggle-add-masterpiece" class="my-3">
-        <button data-action="click->toggle-add-masterpiece#fire" class="btn btn-primary">Publier une annonce</button>
+      <h1 class="mt-3">Annonces</h1>
+
+      <div data-controller="toggle-add-masterpiece" class="my-5">
+        <button data-action="click->toggle-add-masterpiece#fire" class="btn btn-ghost">Publier une annonce</button>
         <div data-toggle-add-masterpiece-target="togglableElement" class="d-none">
           <%= render "form", masterpiece: @new_masterpiece %>
         </div>
       </div>
-      <ul class="list-group">
-        <% @masterpieces.each do |masterpiece|  %>
-          <li class="list-group-item mt-3">
-            <a href="#" class="avatar">
-              <%= cl_image_tag masterpiece.photo.key, class: "avatar" %>
-            </a>
-            <%= link_to masterpiece.title, masterpiece %>
-            <div data-controller="toggle-reservation" class="my-3">
-              <button data-action="click->toggle-reservation#fire" class="btn btn-outline-primary">Voir les réservations programmées</button>
-              <div data-toggle-reservation-target="togglableElement" class="d-none">
-                <%= render "booking", bookings: @bookings, users: @users, masterpiece: masterpiece %>
+
+        <div class="card-product mb-5">
+            <div class="card-product-infos">
+              <h2>Analysez les réservations de vos Oeuvres</h2>
+              <p>Vous avez d'autres oeuvres à proposer? Alors publiez une nouvelle annonce!</p>
+            </div>
+          <%= image_tag "beau-graffiti-cubisme.jpg" %>
+        </div>
+
+      <div class="user-cards-masterpiece my-5">
+      <% @masterpieces.each do |masterpiece|  %>
+        <div class="user-card-masterpiece mt-5">
+          <%= cl_image_tag masterpiece.photo.key, class: "avatar-large" %>
+          <div class="user-masterpiece-content">
+            <p><%= masterpiece.title%></p>
+            <p><small>Réservation en cours : <%=masterpiece.bookings.count%> </small></p>
+          </div>
+          <div class="user-masterpiece-actions">
+            <%= link_to "Supprimer", masterpiece_path(masterpiece.id), class: 'btn btn-ghost', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
+            <button type="button" class="btn btn-ghost mt-3" data-bs-toggle="modal" data-bs-target="#myModal">
+              Réservations
+            </button>
+          </div>
+
+              <div class="modal" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                        <%= render "booking", bookings: @bookings, users: @users, masterpiece: masterpiece %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div>
-              <%= link_to 'Supprimer annonce', masterpiece_path(masterpiece.id), class: 'btn btn-info my-3', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
-            </div>
-          </li>
-        <% end  %>
-      </ul>
+
+        </div>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>

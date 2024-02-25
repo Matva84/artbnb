@@ -1,0 +1,94 @@
+h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.user-cards-masterpiece {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.user-card-masterpiece {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  justify-content: space-between;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+}
+
+.user-card-masterpiece:hover {
+  border: 1px solid #dbdbdb;
+  box-shadow: rgba(0,0,0,0.15) 0 2px 2px;
+  border-radius: 5px;
+}
+
+
+.user-card-masterpiece .user-masterpiece-content {
+  flex-grow: 1;
+  padding: 0 8px;
+}
+
+.user-card-masterpiece p {
+  margin: 0;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.user-card-masterpiece small {
+  color: #999999;
+}
+.user-card-masterpiece .user-masterpiece-actions {
+  opacity: 0;
+  transition: ease .3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-card-masterpiece:hover .user-masterpiece-actions {
+  opacity: 1;
+}
+
+.user-card-masterpiece .user-masterpiece-actions a {
+  color: #999999;
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 8px;
+}
+
+.user-card-masterpiece .user-masterpiece-actions a:hover {
+  color: #555555;
+}
+
+.container-booking {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dbdbdb;
+  padding: 8px 8px;
+  border-radius: 5px;
+}
+
+.booking-details:hover {
+  border: 1px solid #dbdbdb;
+  box-shadow: rgba(0,0,0,0.15) 0 2px 2px;
+  border-radius: 5px;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
