@@ -49,6 +49,14 @@
         </div>
       <% end %>
       </div>
+
+          <div data-controller="toggle-add-masterpiece" class="my-3 row justify-content-center">
+            <button class="btn btn-ghost my-3 w-25" data-action="click->toggle-add-masterpiece#fire">Key statistics</button>
+            <div data-toggle-add-masterpiece-target="togglableElement" class="d-none">
+                <%= render "shared/amount", masterpieces: @masterpieces_all, bookings_user: @bookings_user, bookings_all: @bookings %>
+            </div>
+          </div>
+
     </div>
   </div>
 </div>
