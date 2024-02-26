@@ -47,6 +47,7 @@ class MasterpiecesController < ApplicationController
   def collection
     @users = User.all
     @user = current_user
+    @masterpieces_all = Masterpiece.all
     masterpieces = Masterpiece.all
     @masterpieces = []
     masterpieces.each do |masterpiece|
@@ -56,6 +57,12 @@ class MasterpiecesController < ApplicationController
     end
     @bookings = Booking.all
     @new_masterpiece = Masterpiece.new
+    @bookings_user = []
+    @bookings.each do |booking|
+      if booking.user_id == @user.id
+        @bookings_user << booking
+      end
+    end
   end
 
   private

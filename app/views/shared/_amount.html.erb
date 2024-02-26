@@ -4,7 +4,6 @@
             <canvas data-controller="amount-chart">
 
           <% total_dep = 0 %>
-          <%# ici @bookings : les résa de l'utilisateur actuel %>
           <% bookings_user.each do |booking|  %>
             <% total_dep += booking.total_amount%>
           <%end%>
