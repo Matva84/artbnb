@@ -73,6 +73,17 @@
 </div>
 <%# fin modal %>
 
+
+<%# cards des oeuvres %>
+<div class="container">
+  <h2>Nouvelle version</h2>
+  <div class="home-cards-masterpieces">
+    <%= render "cardmasterpieces", masterpieces: @masterpieces %>
+  </div>
+</div>
+
+
+<h2>Ancienne version</h2>
     <div class="container">
       <div class="row">
         <div class="col">
@@ -82,10 +93,14 @@
               <li class="list-group-item mt-3">
                 <% if (params[:search].present? && params[:search][:start_at].present? && params[:search][:end_at].present?)  %>
                   <%= link_to masterpiece.title, masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) %>
-                  <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+                  <%= masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) do %>
+                    <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+                  <% end %>
                 <% else %>
+                  <%= link_to masterpiece_path(masterpiece) do %>
+                    <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+                  <% end %>
                   <%= link_to masterpiece.title, masterpiece_path(masterpiece) %>
-                  <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
                 <% end %>
               </li>
             <% end  %>
@@ -94,6 +109,8 @@
         </div>
       </div>
     </div>
+<%# fin des cards oeuvre %>
+
   </section>
 
   <section>

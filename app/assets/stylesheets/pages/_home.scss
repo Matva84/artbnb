@@ -110,6 +110,54 @@ p {
   text-align: center;
 }
 
+///////* CARDS MASTERPIECES*///////
+
+.home-cards-masterpieces {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 24px;
+}
+
+.home-card-masterpiece {
+  border: 2px solid #dbdbdb;
+  border-radius: 5px;
+  text-align: center;
+  padding: 30px;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.home-card-masterpiece:hover {
+  box-shadow: rgba(0,0,0,0.2) 0 2px 2px;
+}
+
+.home-card-masterpiece img {
+  height: auto;
+  max-width: 100%;
+  border: 2px solid #dbdbdb;
+  opacity: 1;
+}
+
+.home-card-masterpiece:hover img {
+  opacity: 0.8;
+}
+
+.home-card-masterpiece h3 {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  font-size: 32px;
+  font-weight: 600;
+  text-shadow: 1px 5px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  opacity: 0;
+}
+
+.home-card-masterpiece:hover h3 {
+  opacity: 1;
+}
 
 
 ///////* BLOCS CATÉGORIES *///////
