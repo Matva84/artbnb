@@ -68,31 +68,31 @@ puts "  >> #{User.count} users created"
 puts "Creating masterpieces..."
   # Oeuvre 1
   file = URI.open("https://media.artsper.com/artwork/652392_1_l.jpg")
-  masterpiece1 = Masterpiece.new(title: "Balancing", description: "Cette œuvre comprend du graphite, de l'encre et de la gouache, et est une combinaison d'exécutions intuitives et planifiées.", price: "1587", address: "Royaume-Uni", category: "Paint", user_id: user_bq.id)
+  masterpiece1 = Masterpiece.new(title: "Balancing", description: "This artwork includes graphite, ink and gouache, and is a combination of intuitive and planned executions.", price: "1587", address: "Royaume-Uni", category: "Paint", user_id: user_bq.id)
   masterpiece1.photo.attach(io: file, filename: "balancing.png", content_type: "image/png")
   masterpiece1.save!
 
   # Oeuvre 2
   file = URI.open("https://media.artsper.com/artwork/2144158_1_m.jpg")
-  masterpiece2 = Masterpiece.new(title: "Flamenco", description: "Cette œuvre créée en terre fut moulée pour être réalisée en 8 tirages et 4 épreuves d'artiste.", price: "4500", address: "France", category: "Sculpture", user_id: user_mv.id)
+  masterpiece2 = Masterpiece.new(title: "Flamenco", description: "This artwork created in clay was molded to be produced in 8 prints and 4 artist's proofs.", price: "4500", address: "France", category: "Sculpture", user_id: user_mv.id)
   masterpiece2.photo.attach(io: file, filename: "flamenco.png", content_type: "image/png")
   masterpiece2.save!
 
   # Oeuvre 3
   file = URI.open("https://media.artsper.com/artwork/2173875_1_m.jpg")
-  masterpiece3 = Masterpiece.new(title: "Mhysa", description: "À travers mes séries photographiques intitulées Wanderlust, j'explore le thème ethnique en incarnant mentalement des femmes du monde entier.", price: "1500", address: "France", category: "Photo", user_id: user_gl.id)
+  masterpiece3 = Masterpiece.new(title: "Mhysa", description: "Through my photographic series entitled Wanderlust, I explore the ethnic theme by mentally embodying women from around the world.", price: "1500", address: "France", category: "Photo", user_id: user_gl.id)
   masterpiece3.photo.attach(io: file, filename: "mhysa.png", content_type: "image/png")
   masterpiece3.save!
 
   # Oeuvre 4
   file = URI.open("https://media.artsper.com/artwork/2139686_1_m.jpg")
-  masterpiece4 = Masterpiece.new(title: "Bubbles and bonbons", description: "Née en 1971 à San Francisco, la peintre Amy Nelder appelle son œuvre « Pop Trompe L'oeil ».", price: "6580", address: "Etats-Unis", category: "Paint", user_id: user_fl.id)
+  masterpiece4 = Masterpiece.new(title: "Bubbles and bonbons", description: "Born in 1971 in San Francisco, the painter Amy Nelder calls her work “Pop Trompe L'oeil”.", price: "6580", address: "Etats-Unis", category: "Paint", user_id: user_fl.id)
   masterpiece4.photo.attach(io: file, filename: "bubles.png", content_type: "image/png")
   masterpiece4.save!
 
   # Oeuvre 5
   file = URI.open("https://media.artsper.com/artwork/2174006_1_m.jpg")
-  masterpiece5 = Masterpiece.new(title: "Marius", description: "Sculpture : acrylique, métal, résine", price: "1100", address: "France", category: "Sculpture", user_id: user_bq.id)
+  masterpiece5 = Masterpiece.new(title: "Marius", description: "Sculpture: acrylic, metal, resin", price: "1100", address: "France", category: "Sculpture", user_id: user_bq.id)
   masterpiece5.photo.attach(io: file, filename: "marius.png", content_type: "image/png")
   masterpiece5.save!
 
@@ -104,25 +104,25 @@ puts "Creating masterpieces..."
 
   # Oeuvre 7
   file = URI.open("https://media.artsper.com/artwork/2172395_1_m.jpg")
-  masterpiece7 = Masterpiece.new(title: "Andalouse", description: "Sculpture réalisée entièrement à la main, en chêne teinté par oxydation et feuille d'or.", price: "1960", address: "France", category: "Sculpture", user_id: user_gl.id)
+  masterpiece7 = Masterpiece.new(title: "Andalouse", description: "Sculpture made entirely by hand, in oak tinted by oxidation and gold leaf.", price: "1960", address: "France", category: "Sculpture", user_id: user_gl.id)
   masterpiece7.photo.attach(io: file, filename: "andalouse.png", content_type: "image/png")
   masterpiece7.save!
 
   # Oeuvre 8
   file = URI.open("https://media.artsper.com/artwork/2174509_1_m.jpg")
-  masterpiece8 = Masterpiece.new(title: "Boy looking up", description: "Peinture : peinture aérosol, Pochoir", price: "3900", address: "Belgique", category: "Paint", user_id: user_fl.id)
+  masterpiece8 = Masterpiece.new(title: "Boy looking up", description: "Painting: spray paint, stencil", price: "3900", address: "Belgique", category: "Paint", user_id: user_fl.id)
   masterpiece8.photo.attach(io: file, filename: "boy.png", content_type: "image/png")
   masterpiece8.save!
 
   # Oeuvre 9
   file = URI.open("https://media.artsper.com/artwork/2172266_1_m.jpg")
-  masterpiece9 = Masterpiece.new(title: "Orbe", description: "À travers ses photographies mais aussi ses éditions, l’artiste fabrique un univers onirique et illusoire.", price: "1800", address: "France", category: "Photo", user_id: user_bq.id)
+  masterpiece9 = Masterpiece.new(title: "Orbe", description: "Through his photographs but also his editions, the artist creates a dreamlike and illusory universe.", price: "1800", address: "France", category: "Photo", user_id: user_bq.id)
   masterpiece9.photo.attach(io: file, filename: "orbe.png", content_type: "image/png")
   masterpiece9.save!
 
   # Oeuvre 10
   file = URI.open("https://media.artsper.com/artwork/2173931_1_m.jpg")
-  masterpiece10 = Masterpiece.new(title: "Alfons bois", description: "Oeuvre unique, sculpture en bois, chaque tranche est découpée au laser et après assemblée à la main.", price: "1900", address: "Etats Unis", category: "Sculpture", user_id: user_mv.id)
+  masterpiece10 = Masterpiece.new(title: "Alfons bois", description: "Unique work, wooden sculpture, each slice is laser cut and then assembled by hand.", price: "1900", address: "Etats Unis", category: "Sculpture", user_id: user_mv.id)
   masterpiece10.photo.attach(io: file, filename: "alfons.png", content_type: "image/png")
   masterpiece10.save!
 
