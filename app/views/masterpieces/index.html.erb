@@ -1,3 +1,4 @@
+
 <section class="slider">
   <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1652766825080-88818e6509b6?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
     <div class="content">
@@ -6,17 +7,17 @@
       <a href="#" class="main-btn" id="btn-slider">Découvrir la location</a>
     </div>
   </div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1576926241721-4b830531f667?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
-    <div class="content">
-      <h2>Les posters vintages</h2>
-      <p>Notre sélection en haut de l’affiche ! Cartes du monde, posters graphiques et tableaux détonants... <br>Les possibilités sont infinies pour habiller et personnaliser vos murs.</p>
-      <a href="#" class="main-btn">J'explore la sélection</a>
-    </div>
-  </div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1652766825080-88818e6509b6?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1584661156681-540e80a161d3?q=80&w=2835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
     <div class="content">
       <h2>Les artistes du moment</h2>
       <p>Des peintures vibrantes qui résonnent avec émotion, des oeuvres sur toile en passant par le le mouvement street art<br>notre collection vous invite à explorer les multiples facettes de l'expression artistique contemporaine</p>
+      <a href="#" class="main-btn">J'explore la sélection</a>
+    </div>
+  </div>
+  <div class="slide" style="background-image: url('https://www.fleux.com/cdn/shop/products/old-fashioned_1200x.jpg?v=1675471343');">
+    <div class="content">
+      <h2>Les posters vintages</h2>
+      <p>Notre sélection en haut de l’affiche ! Cartes du monde, posters graphiques et tableaux détonants... <br>Les possibilités sont infinies pour habiller et personnaliser vos murs.</p>
       <a href="#" class="main-btn">J'explore la sélection</a>
     </div>
   </div>
@@ -80,6 +81,7 @@
             <% if (params[:search].present? && params[:search][:start_at].present? && params[:search][:end_at].present?)  %>
               <%= link_to masterpiece.title, masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) %>
               <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
+              <p>Prix: <%= masterpiece.price %></p>
             <% else %>
               <%= link_to masterpiece.title, masterpiece_path(masterpiece) %>
               <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
@@ -90,7 +92,6 @@
         </div>
       </div>
     </div>
-  </section>
 
   <section>
     <div class="nav-blocks">
@@ -139,29 +140,3 @@
         </div>
       </div>
     </div>
-
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>À propos</h3>
-      <p>Informations sur l'entreprise</p>
-      <p>Politique de confidentialité</p>
-      <p>Conditions d'utilisation</p>
-    </div>
-    <div class="footer-section">
-      <h3>Nos services</h3>
-      <p>La location</p>
-      <p>Guide</p>
-      <p>FAQ</p>
-    </div>
-    <div class="footer-section">
-      <h3>Contact</h3>
-      <p>Email : artbnb@artmail.com</p>
-      <p>Téléphone : +1234567890</p>
-      <p>Adresse : 123 rue des artistes</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    &copy; 2024 Artbnb. Tous droits réservés.
-  </div>
-</footer>

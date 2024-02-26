@@ -21,17 +21,23 @@ section {
 
 .slide {
   width: 100%;
-  height: 700px;
+  height: 663px;
   display: none;
   background-size: cover;
   background-position: center;
   transition: transform 0.5s ease;
+  position: relative;
 }
 
-.slide:first-child {
-  display: block;
+.slide:before {
+  content: ""; /* Ajout d'un pseudo-élément pour créer un calque sur l'image */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25); /* Couleur de fond avec opacité */
 }
-
 
 .content {
   position: absolute;
@@ -39,7 +45,8 @@ section {
   left: 40%;
   transform: translate(-50%, -50%);
   text-align: left;
-  color: white; /* Couleur du texte, pour un meilleur contraste avec l'image de fond */
+  color: white;
+  z-index: 1;
 }
 
 h2 {
@@ -76,19 +83,19 @@ p {
   border-radius: 50%;
   margin: 0 8px;
   gap: 5px;
-  background-color: rgb(188, 188, 188); /* Couleur des points légèrement transparente */
+  background-color: rgb(188, 188, 188);
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
 
 .dot.active {
-  background-color: black; /* Couleur des points pleinement visible */
+  background-color: black;
 }
 
 ///////* FORM *///////
 
 .form {
-  width: 50%; /* Ajustez la largeur du formulaire selon vos besoins */
+  width: 50%;
   margin: 0 auto;
 }
 
@@ -98,7 +105,7 @@ p {
 .form select,
 .form input[type="date"],
 .form input[type="submit"] {
-  width: 100%; /* Ajustez la largeur des champs en fonction de la largeur du formulaire et de la marge interne */
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -238,7 +245,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 86%; /* Réduire la hauteur du h2 pour laisser de l'espace aux icônes */
+  height: 86%;
   background: linear-gradient(0deg, #000, rgba(0, 0, 0, 0.1) 40%, transparent 60%);
   text-align: center;
   color: white;
@@ -268,17 +275,17 @@ body {
 .reassurance-item {
   display: flex;
   align-items: center;
-  margin: 0 20px; /* Marge horizontale entre les éléments */
+  margin: 0 20px;
 }
 
 .icon-pre-footer {
-  width: 30px; /* Ajuster la largeur des icônes selon les besoins */
-  height: auto; /* Ajuster la hauteur des icônes selon les besoins */
-  margin-right: 15px; /* Marge entre l'icône et le texte */;
+  width: 30px;
+  height: auto;
+  margin-right: 15px;
 }
 
 .icon-pre-footer h3 {
-  margin-top: 10px; /* Espacement entre l'icône et le titre */
+  margin-top: 10px;
   text-align: center; /* Centrer le texte */
   margin-bottom: 0px;
 }

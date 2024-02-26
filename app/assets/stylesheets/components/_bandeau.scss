@@ -1,0 +1,44 @@
+.bandeau {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  top: 0;
+  z-index: 1000;
+  padding: 0px 485px;
+  height: 50px;
+  width: 100%;
+}
+
+.bandeau h3 {
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  margin: 0px;
+}
+
+.btn-bandeau {
+  background-color: #000000;
+  border: solid 1px #ffffff;
+  border-radius: 6px;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  padding: 6px 12px 6px 12px;
+  font-size: 11px;
+  font-weight: 400;
+  cursor: pointer;
+  &:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: rgb(0, 0, 0);
+  }
+}
+
+.btn-bandeau {
+  transition: background-color 0.3s, color 0.3s;
+}
