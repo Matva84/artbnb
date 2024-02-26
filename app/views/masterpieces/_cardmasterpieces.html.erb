@@ -1,0 +1,22 @@
+<% masterpieces.each do |masterpiece|  %>
+  <% if (params[:search].present? && params[:search][:start_at].present? && params[:search][:end_at].present?) %>
+    <div class="home-card-masterpiece">
+      <h3>
+        <%= masterpiece.title %>
+      </h3>
+              <%= masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) do %>
+        <%= cl_image_tag masterpiece.photo.key %>
+      <% end %>
+    <div>
+
+  <% else %>
+    <div class="home-card-masterpiece">
+      <h3>
+        <%= masterpiece.title %>
+      </h3>
+              <%= link_to masterpiece_path(masterpiece) do %>
+          <%= cl_image_tag masterpiece.photo.key %>
+        <% end %>
+    </div>
+  <% end %>
+<% end  %>
