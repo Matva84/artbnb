@@ -3,12 +3,12 @@
     <div class="cardbookingdates">
       <div class="cardbookingselection_left">
         <div class="inputadj">
-          <%= f.input :start_at, label: "Start from", as: :string, input_html: { data: { controller: "datepicker" }, value: params[:booking_start_at]} %>
+          <%= f.input :start_at, label: "Start from", as: :string, input_html: { data: { controller: "datepicker" , action: "change->datepicker#fire", target:"togglableElement"}, value: params[:booking_start_at]}, id:"startdate"%>
         </div>
       </div>
       <div class="cardbookingselection_right">
         <div class="inputadj">
-          <%= f.input :end_at, label: "To", as: :string, input_html: { data: { controller: "datepicker" }, value: params[:booking_end_at] } %>
+          <%= f.input :end_at, label: "To", as: :string, input_html: { data: { controller: "datepicker" , action: "change->datepicker#fire", target:"togglableElement"}, value: params[:booking_end_at], action: "onchange->datepicker#fire"}, id:"enddate"%>
         </div>
       </div>
     </div>
@@ -21,9 +21,9 @@
 
     <div class="bookcard">
       <div class="booktext">
-        <p>Duration : <b><%= nbdays %></b> days </p>
-        <p>Price per day : <b><%= masterpiece.price %></b> € </p>
-        <p>Total amount : <b><%= masterpiece.price * nbdays %></b> € </p>
+        <p>Duration : <b id="night"><%= nbdays %></b> days </p>
+        <p>Price per day : <b id="price"><%= masterpiece.price %></b> € </p>
+        <p>Total amount : <b id="totalprice"><%= masterpiece.price * nbdays %></b> € </p>
       </div>
       <div class="bookbtn">
         <div class="form-group mt-3">
