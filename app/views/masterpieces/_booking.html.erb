@@ -1,7 +1,8 @@
+
+<% bookings.each do |booking|  %>
+  <% if booking.masterpiece_id == masterpiece.id %>
     <div class="container-booking">
       <ul class="booking-details m-3">
-        <% bookings.each do |booking|  %>
-          <% if booking.masterpiece_id == masterpiece.id %>
             <li class="list-group-item">
               <p class="mb-2">Tenant : <%= users.find(booking.user_id).name %></p>
               <p class="mb-2">Contact : <%= users.find(booking.user_id).email %></p>
@@ -10,7 +11,7 @@
               <p class="mb-2">To : <%= booking.end_at.to_date %></p>
             </li>
           <%= link_to 'Cancel booking', booking_path(booking.id), class: 'btn btn-ghost mt-3', data: {turbo_method: :delete, turbo_confirm: "Do you want to cancel this booking?"} %>
-          <% end  %>
-        <% end  %>
       </ul>
-</div>
+    </div>
+  <% end  %>
+<% end  %>
