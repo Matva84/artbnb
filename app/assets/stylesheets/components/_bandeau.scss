@@ -1,7 +1,4 @@
 .bandeau {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: #000000;
   color: #ffffff;
   text-align: center;
@@ -9,9 +6,17 @@
   position: relative;
   top: 0;
   z-index: 1000;
-  padding: 0px 485px;
   height: 50px;
   width: 100%;
+  align-content: center;
+}
+
+.bandeau-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  margin: 0 auto;
 }
 
 .bandeau h3 {
