@@ -91,3 +91,20 @@ p {
   justify-content: flex-end;
   // border: blue 1px solid;
 }
+.leftpadding {
+  margin-left: 48px;
+}
+.bookcard {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  //border: 1px solid black;
+  padding-left: 48px;
+  padding-right: 48px;
+  gap: 65px
+}
+.bookbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
