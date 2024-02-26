@@ -1,0 +1,12 @@
+        <%= simple_form_for :search, method: :get do |f| %>
+          <div class="searchdesc">
+            <%= f.input :search, label: "Search by title, description or address", required: false %>
+            <%= f.input :max_price, label: "Maximal price per day", required: false,
+                input_html: { type: :number, name: :max_price, value: params.dig(:max_price) } %>
+            <%= f.input :category, label: "Category", required: false, collection: Masterpiece::AUTHORIZED_CATEGORIES,
+                include_blank: true, selected: params.dig(:category), input_html: { name: :category } %>
+            <%= f.input :start_at, label: "Start from", as: :string, input_html: { data: { controller: "datepicker" } } %>
+            <%= f.input :end_at, label: "To", as: :string, input_html: { data: { controller: "datepicker" } } %>
+            <%= f.submit "Search", class: 'btn btn-ghost' %>
+            </div>
+        <% end %>
