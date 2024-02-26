@@ -28,14 +28,15 @@ class BookingsController < ApplicationController
 
     amount = (@end_date - @start_date + 1) * @masterpiece.price
 
-    @booking = Booking.new(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
-    if @masterpiece.available?(@start_date, @end_date) && @booking.save
-      redirect_to bookings_path, notice: "La réservation a été effectuée. Total à payer : #{amount}€"
-    elsif @masterpiece.available?(@start_date, @end_date) == false
-      render :new, notice: "Cet oeuvre n'est plus disponibles sur ces dates."
-      # prévoir un message d'alerte en JS
+    if @masterpiece.available?(@start_date, @end_date)
+      @booking = Booking.new(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
+      if @booking.save
+        redirect_to bookings_path, notice: "Artwork successfully booked. Total amount : #{amount}€"
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to booking_path(@masterpiece), alert: "Not available. Dates already booked"
     end
   end
 
@@ -49,7 +50,7 @@ class BookingsController < ApplicationController
     amount = (@end_date - @start_date + 1) * @masterpiece.price
 
     @booking.update(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
-    redirect_to bookings_path, notice: "La modification a été effectuée. Nouveau montant : #{amount}€"
+    redirect_to bookings_path, notice: "Artwork successfully updated. Amount : #{amount}€"
   end
 
   def destroy

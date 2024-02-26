@@ -32,7 +32,7 @@ class MasterpiecesController < ApplicationController
     @masterpiece = Masterpiece.new(masterpiece_params)
     @masterpiece.user_id = @user.id
     if @masterpiece.save
-      redirect_to masterpieces_collection_path, notice: "La nouvelle œuvre a été ajoutée avec succès."
+      redirect_to masterpieces_collection_path, notice: "The new Artwork has been added successfully."
     else
       render :collection, status: :unprocessable_entity
     end
