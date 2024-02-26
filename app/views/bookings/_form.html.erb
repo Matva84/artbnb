@@ -13,7 +13,11 @@
       </div>
     </div>
 
-    <% nbdays = (params[:booking_end_at].to_date - params[:booking_start_at].to_date).to_s.split("/").first.to_i %>
+    <% if params[:booking_start_at].present? && params[:booking_end_at].present? %>
+      <% nbdays = (params[:booking_end_at].to_date - params[:booking_start_at].to_date).to_s.split("/").first.to_i %>
+    <% else %>
+      <% nbdays = 1 %>
+    <% end %>
 
     <div class="bookcard">
       <div class="booktext">
