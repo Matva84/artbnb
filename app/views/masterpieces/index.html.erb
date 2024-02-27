@@ -50,10 +50,11 @@
    </div>
   </section>
 
-  <section>
 
+<section>
+<div class="container">
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-ghost my-5" data-bs-toggle="modal" data-bs-target="#homeSearchModal">
+<button type="button" class="btn btn-ghost mb-5" data-bs-toggle="modal" data-bs-target="#homeSearchModal">
   Search masterpiece
 </button>
 
@@ -75,45 +76,43 @@
 
 
 <%# cards des oeuvres %>
-<div class="container">
-  <h2>Nouvelle version</h2>
   <div class="home-cards-masterpieces">
     <%= render "cardmasterpieces", masterpieces: @masterpieces %>
   </div>
 </div>
 
+</section>
 
-<h2>Ancienne version</h2>
+<%# <h2>Ancienne version</h2>
     <div class="container">
       <div class="row">
         <div class="col">
           <h1>Our artworks</h1>
           <ul class="list-group">
-            <% @masterpieces.each do |masterpiece|  %>
+            <% @masterpieces.each do |masterpiece|
               <li class="list-group-item mt-3">
-                <% if (params[:search].present? && params[:search][:start_at].present? && params[:search][:end_at].present?)  %>
-                  <%= link_to masterpiece.title, masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) %>
-                  <%= masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) do %>
-                    <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
-                  <% end %>
-                <% else %>
-                  <%= link_to masterpiece_path(masterpiece) do %>
-                    <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill %>
-                  <% end %>
-                  <%= link_to masterpiece.title, masterpiece_path(masterpiece) %>
-                <% end %>
+                <% if (params[:search].present? && params[:search][:start_at].present? && params[:search][:end_at].present?)
+                  <%= link_to masterpiece.title, masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at])
+                  <%= masterpiece_path(masterpiece,start_at:params[:search][:start_at],end_at:params[:search][:end_at]) do
+                    <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill
+                  <% end
+                <% else
+                  <%= link_to masterpiece_path(masterpiece) do
+                    <%= cl_image_tag masterpiece.photo.key, height: 300, width: 400, crop: :fill
+                  <% end
+                  <%= link_to masterpiece.title, masterpiece_path(masterpiece)
+                <% end
               </li>
-            <% end  %>
+            <% end
           </ul>
 
         </div>
       </div>
-    </div>
+    </div> %>
 <%# fin des cards oeuvre %>
 
-  </section>
 
-  <section>
+  <%# <section>
     <div class="nav-blocks">
       <div class="left-blocks">
         <div class="nav-block__item">
@@ -141,7 +140,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> %>
 
   <section>
     <div class="pre-footer"></div>
