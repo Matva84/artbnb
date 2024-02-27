@@ -6,9 +6,13 @@ export default class extends Controller {
   static targets = ["togglableElement"]
 
   connect() {
-    flatpickr(this.element);
-    this.fire()
-  }
+    flatpickr(this.element, {
+        minDate: "today" // Empêche de sélectionner les jours avant aujourd'hui
+    });
+
+    this.fire();
+}
+
 
   fire() {
     //console.log("ca click par ici!")

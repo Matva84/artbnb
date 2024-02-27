@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
     if @masterpiece.available?(@start_date, @end_date)
       @booking = Booking.new(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
       if @booking.save
-        redirect_to bookings_path, notice: "Artwork successfully booked. Total amount : #{amount}€"
+        redirect_to bookings_path, alert: "Artwork successfully booked. Total amount : #{amount}€"
       else
         render :new
       end
@@ -50,7 +50,7 @@ class BookingsController < ApplicationController
     amount = (@end_date - @start_date + 1) * @masterpiece.price
 
     @booking.update(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
-    redirect_to bookings_path, notice: "Artwork successfully updated. Amount : #{amount}€"
+    redirect_to bookings_path, alert: "Artwork successfully updated. Amount : #{amount}€"
   end
 
   def destroy
