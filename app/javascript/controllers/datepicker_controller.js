@@ -3,7 +3,7 @@ import flatpickr from "flatpickr"
 
 // Connects to data-controller="datepicker"
 export default class extends Controller {
-  static targets = ["togglableElement"]
+  // static targets = ["togglableElement", "bookingStart", "bookingEnd"]
 
   connect() {
     flatpickr(this.element, {
@@ -22,9 +22,7 @@ export default class extends Controller {
     const price = document.getElementById('price').innerText;
     const totalPrice = document.getElementById('totalprice')
     const totalNight = document.getElementById('night')
-    console.log(dateEnd,dateStart.value,parseFloat(price),totalPrice.innerText,totalNight.innerText);
 
-    //function updatePrice() {
       const Date1 = new Date(dateStart.value);
       const Date2 = new Date(dateEnd.value);
 
@@ -35,13 +33,16 @@ export default class extends Controller {
       let jour = Math.round(dateDiff/(1000*60*60*24))+1;
       totalNight.innerText = jour;
       totalPrice.innerText = jour * parseFloat(price);
-    //}
 
-    //[dateStart, dateEnd].forEach(date => {
-    //  date.addEventListener("change", (event) => {
-    //    console.log("click")
-    //    updatePrice();
-    //  });
-
+    console.log(dateStart.value,dateEnd.value,parseFloat(price),totalPrice.innerText,totalNight.innerText);
   }
+
+  // update() {
+  //   console.log("here")
+  //   let dateStart = document.getElementById('startdate');
+  //   let dateEnd = document.getElementById('enddate');
+  //   console.log(dateStart, dateEnd)
+    // let bookingStart = document.getElementById('bookingStart')
+    // console.log(bookingStart)
+  // }
 }
