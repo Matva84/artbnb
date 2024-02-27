@@ -3,12 +3,25 @@
     <div class="col">
       <h1 class="mt-3">Listings</h1>
 
-      <div data-controller="toggle-add-masterpiece" class="my-5">
-        <button data-action="click->toggle-add-masterpiece#fire" class="btn btn-ghost">Publish a new artwork</button>
-        <div data-toggle-add-masterpiece-target="togglableElement" class="d-none">
-          <%= render "form", masterpiece: @new_masterpiece %>
-        </div>
+ <!-- Button trigger modal -->
+<button type="button" class="btn btn-ghost my-5" data-bs-toggle="modal" data-bs-target="#newArtworkModal">
+  Publish a new artwork
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="newArtworkModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newArtworkModalLabel">Publish a New Artwork</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <%= render "form", masterpiece: @new_masterpiece %>
+      </div>
+    </div>
+  </div>
+</div>
 
         <div class="card-product mb-5">
             <div class="card-product-infos">
