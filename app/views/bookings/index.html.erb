@@ -24,7 +24,7 @@
             <p><small><%= booking.start_at.to_date %> - <%= booking.end_at.to_date %></small></p>
           </div>
           <div class="notification-actions">
-            <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, booking_path(booking.id), data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette réservation?"} %>
+            <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, booking_path(booking.id), data: {turbo_method: :delete, turbo_confirm: "Do you want to cancel this booking?"} %>
             <div data-controller="toggle-booking-form" class="my-3">
                 <button data-action="click->toggle-booking-form#fire"><i class="fas fa-pencil-alt"></i></button>
                 <div data-toggle-booking-form-target="togglableElement" class="d-none">

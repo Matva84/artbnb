@@ -8,7 +8,7 @@
       </div>
       <div class="cardbookingselection_right">
         <div class="inputadj">
-          <%= f.input :end_at, label: "To", as: :string, input_html: { data: { controller: "datepicker" , action: "change->datepicker#fire", target:"togglableElement"}, value: params[:booking_end_at], action: "onchange->datepicker#fire"}, id:"enddate"%>
+          <%= f.input :end_at, label: "To", as: :string, input_html: { data: { controller: "datepicker" , action: "change->datepicker#fire", target:"togglableElement"}, value: params[:booking_end_at]}, id:"enddate"%>
         </div>
       </div>
     </div>
