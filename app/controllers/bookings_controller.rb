@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
     if @masterpiece.available?(@start_date, @end_date)
       @booking = Booking.new(user_id: @user.id, masterpiece_id: @masterpiece.id, start_at: @start_date, end_at: @end_date, total_amount: amount)
       if @booking.save
-        redirect_to bookings_path, alert: "Artwork successfully booked. Total amount : #{amount}€"
+        redirect_to bookings_path, alert: "Artwork successfully booked. Amount : #{amount}€"
       else
         render :new
       end

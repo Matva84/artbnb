@@ -1,0 +1,45 @@
+<div class="container">
+<div data-controller="update-booking">
+    <%= simple_form_for [masterpiece, booking] do |f| %>
+
+    <div class="cardbookingdates">
+      <div class="cardbookingselection_left">
+        <div class="inputadj">
+          <%= f.input :start_at, label: "Start from", as: :string, input_html: { data: { controller: "datepicker", action: "change->update-booking#update", update_booking_target:"bookingStart"}}%>
+        </div>
+      </div>
+      <div class="cardbookingselection_right">
+        <div class="inputadj">
+          <%= f.input :end_at, label: "To", as: :string, input_html: { data: { controller: "datepicker", action: "change->update-booking#update", update_booking_target:"bookingEnd"}}%>
+        </div>
+      </div>
+    </div>
+
+      <% nbdays = booking.end_at.to_date - booking.start_at.to_date + 1 %>
+
+    <div class="bookcard">
+      <div class="booktext">
+        <p>Duration : <b data-update-booking-target="days"><%= nbdays.to_i %></b> days </p>
+        <p>Price per day : <b data-update-booking-target="price"><%= masterpiece.price %></b> € </p>
+        <p>Total amount : <b data-update-booking-target="totalprice"><%= masterpiece.price * nbdays%></b> € </p>
+      </div>
+      <div class="bookbtn">
+        <div class="form-group mt-3">
+        <%= f.submit 'Book now !', class: 'btnSubmitSmall' %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+
+
+<%# on pourra prévoir ici un peu de js pour afficher le prix total en fonction du nombre de jours sélectionnés %>
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+</div>
+</div>
