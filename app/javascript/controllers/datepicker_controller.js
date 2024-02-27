@@ -11,14 +11,14 @@ export default class extends Controller {
   }
 
   fire() {
-    //console.log("ca click par ici!")
+    console.log("ca click dans datepicker!")
 
     const dateStart = document.getElementById('booking_start_at');
     const dateEnd = document.getElementById('booking_end_at');
     const price = document.getElementById('price').innerText;
     const totalPrice = document.getElementById('totalprice')
     const totalNight = document.getElementById('night')
-    //console.log(dateEnd.value,dateStart.value,parseFloat(price),totalPrice.innerText,totalNight.innerText);
+    console.log(dateEnd,dateStart.value,parseFloat(price),totalPrice.innerText,totalNight.innerText);
 
     //function updatePrice() {
       const Date1 = new Date(dateStart.value);
