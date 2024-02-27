@@ -34,3 +34,8 @@
 
   <% end %>
 <%# on pourra prévoir ici un peu de js pour afficher le prix total en fonction du nombre de jours sélectionnés %>
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
