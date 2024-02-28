@@ -1,4 +1,3 @@
-
 .main-btn {
   background-color: #000000;
   border: solid 1.5px #000000;
@@ -33,9 +32,9 @@
   }
 }
 
-// .main-btn,
-// .secondary-btn {
-//  transition: background-color 0.3s, color 0.3s;
+.main-btn, .secondary-btn {
+  transition: background-color 0.3s, color 0.3s;
+}
 
 .btn-ghost {
   color: black;

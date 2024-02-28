@@ -2,32 +2,36 @@
   <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1652766825080-88818e6509b6?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
     <div class="content">
       <h2>Searching for an artwork ?<br>Opt for renting</h2>
-      <p>Rent today and enjoy the space, a moment, a unique creation to contemplate every day.<br>Painting, Drawing, Poster, Photography, ... Discover the works of our artits.</p>
-      <a href="#" class="main-btn" id="btn-slider">Discover the renting</a>
+      <p>Rent today and enjoy the space, a moment, a unique creation to contemplate every day.<br>Painting, Drawing, Poster, Photography, ... Discover the works of our artists.</p>
+      <a href="#" id="btn-slider">Discover the renting</a>
     </div>
   </div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1576926241721-4b830531f667?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+  <!-- Second slide -->
+  <div class="slide" style="background-image: url('https://www.fleux.com/cdn/shop/products/martini_1200x.jpg?v=1675471334');">
     <div class="content">
       <h2>Vintage posters</h2>
       <p>Our top-of-the-line selection! World maps, graphic posters, and striking paintings... <br>The possibilities are endless to dress up and personalize your walls.</p>
-      <a href="#" class="main-btn">Explore the selection</a>
+      <a href="#" id="btn-slider">Explore the selection</a>
     </div>
   </div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1652766825080-88818e6509b6?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+  <!-- Third slide -->
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1584661156681-540e80a161d3?q=80&w=2835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
     <div class="content">
       <h2>The current artists</h2>
       <p>Vibrant paintings that resonate with emotion, canvas artworks spanning various styles, including street art movement. Our collection invites you to explore the multiple facets of contemporary artistic expression.</p>
-      <a href="#" class="main-btn">Explore the selection</a>
+      <a href="#" id="btn-slider">Explore the selection</a>
     </div>
   </div>
+  <!-- Fourth slide -->
   <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1578926078640-668b1fb75403?q=80&w=2866&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
     <div class="content">
       <h2>The watercolors</h2>
       <p>Whether to brighten up your interior or to give an unforgettable gift, our watercolors will charm your heart and awaken your artistic sensibility.</p>
-      <a href="#" class="main-btn">Explore the selection</a>
+      <a href="#" id="btn-slider">Explore the selection</a>
     </div>
   </div>
 
+  <!-- Pagination dots -->
   <div class="dots-container">
       <span class="dot" data-index="0"></span>
       <span class="dot" data-index="1"></span>
@@ -44,44 +48,16 @@
           <p>Discover the artworks that our customers love.</p>
         </div>
         <div class="link">
-          <a href="#" class="secondary-btn">Discover the collection</a>
+          <a href="#" class="secondary-btn" data-bs-toggle="modal" data-bs-target="#homeSearchModal">Search masterpieces</a>
         </div>
       </div>
-   </div>
-  </section>
 
-
-<section>
-<div class="container">
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-ghost mb-5" data-bs-toggle="modal" data-bs-target="#homeSearchModal" data-bs-backdrop="false">
-  Search masterpiece
-</button>
-
-<!-- Modal -->
-<div class="modal" id="homeSearchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="homeSearchModalLabel">Find an artwork to rent quickly!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= render "searchform" %>
+    <%# cards des oeuvres %>
+      <div class="home-cards-masterpieces">
+        <%= render "cardmasterpieces", masterpieces: @masterpieces %>
       </div>
     </div>
-  </div>
-</div>
-<%# fin modal %>
-
-
-<%# cards des oeuvres %>
-  <div class="home-cards-masterpieces">
-    <%= render "cardmasterpieces", masterpieces: @masterpieces %>
-  </div>
-</div>
-
-</section>
+  </section>
 
 <%# <h2>Ancienne version</h2>
     <div class="container">
@@ -142,10 +118,20 @@
     </div>
   </section> %>
 
-  <section>
-    <div class="pre-footer"></div>
-  </section>
-
-  <section>
-    <div class="footer"></div>
-  </section>
+<div class="pre-footer" style="background-image: url('https://images.unsplash.com/photo-1589834390005-5d4fb9bf3d32?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <h2>Get -10% off your first Artbnb rental</h2>
+    <div class="reassurance-list">
+        <div class="reassurance-item" id="icon-text-1">
+            <img class="icon-pre-footer" src="data:image/png;base64,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">
+            <h3>Verified renters</h3>
+        </div>
+        <div class="reassurance-item" id="icon-text-2">
+            <img class="icon-pre-footer" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA10lEQVR4nO3ZsRGCUBCE4SsDsSQsB7QAbQt7Eg0w+p3n3IwOPtHA4B7ul15yNwsEi5mIiIi8AjZAD1yI5+y7NZ+OOFCO/VwSyQi0wMqCAVZA5zuSTQY4+rC14ICt79rnhun5SyoLDqh81yE3vLNC8G7fxR1SGtMhwZgSCca+/goEhQ5ZQiL8+jnWIQ96R6JBX61gUCLBoESCQYkUlMjgs3DF3BSw9l1PuWHqVJPOggN2cwVd48PRm7zaggFqP+Lqu+bL7FQMU3qJPUmmf6pQy/utICIi8q9uYdJqXVSS4jUAAAAASUVORK5CYII=">
+            <h3>Secure payment</h3>
+        </div>
+        <div class="reassurance-item" id="icon-text-3">
+            <img class="icon-pre-footer" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD50lEQVR4nO2aW4hOURTHD+NWLuMyeKBRRPHAA8rDUEai3HLnQYiUWymTB4pGvLg9kCSihJJILpESjUvkmnsaIXcxDIbBzPy0sr4c297fOfPNmXPG5f8yX+c7e5/9P3ut/1r//Y3n/cc/AqAP8JafKAMmeH8agBX8jn1eXQXQElgK9DOuH7QQuWPckwvMA1rFvnA/ZAHARV3kNyWUBbQGnliIfAXa6NhJvtC7ImO8BHfismWxt4HPluv+XCmyXL8kcyZBZCbRY1ESRNoDryIk8QXoGTsRJTMqQiIFiZDwkTkdAYlrQP0kSbRNk9h3gYlAJ6AzMA145Lj3A9Ai7sXL4vZJTVA5teEmkO3IKxeZp8AxYA3QPw4i8vaCMCzN+CkhxpfGQaQiYBGV6cJEdyUIVXEQqQxBpGma8dKWBKEiDiL+jtaFgWnGS2tSJ0Krt3a2Bx39lOA80MQytoWKhA2iftJz7QSG1zoRS9P4ybGwC6I+Uh+A5sBQ4IZrB+QeLylop3srROsRlFcnEyMhAJYRHSZ7SUCMlHqQqCAikpsEETFRUWNOUsZKzJCJUwHV/z1w1XJdFCsZy6uWVhaAepMxej3boWbPVMFEyQpUCNAXkrhvl52ZIa2HcT1F0I9jxj09xRUmYnHDQgubibXenwZgBPDRKHr9k15UY7W1u4BiTWbpgl8A14H1YqAymLc7sFHD8B1wTw41aoNAR2BlyEMGITc65LzSc20wLIGIwxKgkc99LgQ269/qtzBAHrAng4InjnFUwNzj1A3+IgJAF/1eFG0WUOL7/mW6jtp8gEwwRjvXmqAcGGCZv4nuQokhx5MMFTtrzCfhnKPfi3QvB+5rlEy0ETlHtO1GfkCz2SHlJMWIAauMMwCxCCN8Y4ZY/P4b2+TCMmqIMOwGFkhoAD2AdubRjwpJqkOuAramaovWqW2O+Z/biMwnPkjuPQQ2+cJGlO8BMNi3ppGWfPKj0EZEtvc18eOwT6Wa6ecc3cl0EIfa0BW7kkhx4xd/DkxQlXKhQktClisHPY1fl3WtLRz12eb9AfeKVe7rJGCQkbitLvL1aHQ8sFrrQrG27K4ceQxskZenz5VxLoiaFaaKZVgiXUN4bBN5oR9gf+boNMevl4FemU4sZ7vVQaWe924H5qrU5qaS1/EMSe5BwF7HiysHFgMNaurHk8QZaSgzJmCQKbIcoMlJ+XRJUC1cUaMUmB3pbyXqJ/w+vJvlHwKOREjigLQtkRHwLbSenpRMlc8BYSgqlSmkcRzr1RXwg9ChahCQ0NyR+t29zoEfXuZEAImLNZXs2CDaD6zTalymfdxxbUGcofof3l+C7/Tr0qL2HNZOAAAAAElFTkSuQmCC">
+            <h3>24/7 customer service</h3>
+        </div>
+    </div>
+</div>

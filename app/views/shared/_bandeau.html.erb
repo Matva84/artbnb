@@ -1,0 +1,23 @@
+<div class="bandeau">
+  <div class="bandeau-container">
+    <h3>Need help finding an artwork to rent?</h3>
+    <!-- Add the data-bs-toggle and data-bs-target attributes -->
+    <a class="btn-bandeau" href="#" data-bs-toggle="modal" data-bs-target="#homeSearchModal">Access the questionnaire</a>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="homeSearchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="homeSearchModalLabel">Find an artwork to rent quickly!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render "searchform" %>
+      </div>
+    </div>
+  </div>
+</div>
+<%# End of modal %>
