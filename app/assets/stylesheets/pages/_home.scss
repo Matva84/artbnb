@@ -8,7 +8,6 @@
 
 section {
   margin-bottom: 60px;
-  height: auto;
 }
 
 ///////* SLIDER *///////
@@ -21,22 +20,17 @@ section {
 
 .slide {
   width: 100%;
-  height: 663px;
+  height: 700px;
   display: none;
   background-size: cover;
   background-position: center;
   transition: transform 0.5s ease;
 }
 
-.slide:before {
-  content: ""; /* Ajout d'un pseudo-élément pour créer un calque sur l'image */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.15); /* Couleur de fond avec opacité */
+.slide:first-child {
+  display: block;
 }
+
 
 .content {
   position: absolute;
@@ -52,11 +46,9 @@ h2 {
   margin-bottom: 20px;
 }
 
-.slide p {
+p {
   font-weight: 300;
   margin-bottom: 30px;
-  font-size: 16px;
-  font-family: 'Inter', sans-serif;
 }
 
 .dots-container {
@@ -92,25 +84,10 @@ h2 {
   background-color: black; /* Couleur des points pleinement visible */
 }
 
-#btn-slider {
-  background-color: #000000;
-  border-radius: 6px;
-  color: #fff;
-  text-decoration: none;
-  text-align: center;
-  padding: 10px 20px 10px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  &:hover {
-    background-color: #ffffff;
-    color: black;
-  }
-}
-
 ///////* FORM *///////
 
 .form {
-  width: 50%;
+  width: 50%; /* Ajustez la largeur du formulaire selon vos besoins */
   margin: 0 auto;
 }
 
@@ -120,7 +97,7 @@ h2 {
 .form select,
 .form input[type="date"],
 .form input[type="submit"] {
-  width: 100%;
+  width: 100%; /* Ajustez la largeur des champs en fonction de la largeur du formulaire et de la marge interne */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -181,6 +158,7 @@ h2 {
 .home-card-masterpiece:hover h3 {
   opacity: 1;
 }
+
 
 ///////* BLOCS CATÉGORIES *///////
 
@@ -289,110 +267,4 @@ body {
 
 body {
   background-color: white;
-}
-
-///////* PRE-FOOTER *///////
-
-.pre-footer {
-  width: 100%;
-  height: 700px;
-  background-size: cover;
-  background-position: 100% 58%;
-  overflow: hidden;
-  position: relative;
-  margin-top: 60px;
-}
-
-.pre-footer h2 {
-  padding: 90px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 86%;
-  background: linear-gradient(0deg, #000, rgba(0, 0, 0, 0.1) 40%, transparent 60%);
-  text-align: center;
-  color: white;
-  font-size: 36px;
-  font-weight: 600;
-  margin-bottom: 0px;
-
-}
-
-.pre-footer h3 {
-  color: white;
-  font-size: 16px;
-  font-weight: 220;
-  text-align: center;
-  margin-bottom: 0px;
-}
-
-.reassurance-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 120px;
-  background-color: black;
-  height: 100px;
-}
-
-.reassurance-item {
-  display: flex;
-  align-items: center;
-  margin: 0 20px;
-}
-
-.icon-pre-footer {
-  width: 30px;
-  height: auto;
-  margin-right: 15px;
-}
-
-.icon-pre-footer h3 {
-  margin-top: 10px;
-  text-align: center; /* Centrer le texte */
-  margin-bottom: 0px;
-}
-
-///////* FOOTER *///////
-
-.footer {
-  background-color: #000000;
-  color: #fff;
-  padding: 30px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  gap: 300px;
-  margin-bottom: 50px
-}
-
-.footer-section {
-  flex: 1;
-  width: 250px;
-}
-
-.footer-section h3 {
-  margin-bottom: 20px;
-  font-size: 22px;
-}
-
-.footer-section p {
-  margin: 5px 0;
-  font-family: Inter;
-  font-weight: 200;
-  font-size: 14px;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 30px;
-  border-top: 1px solid #282828;
-  width: 80%;
-  font-weight: 200;
-  font-size: 12px;
 }
