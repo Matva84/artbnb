@@ -1,14 +1,44 @@
   <%= simple_form_for [masterpiece, booking] do |f| %>
-    <div class="form-group mt-3 ">
-      <%= f.input :start_at, label: "Début de location", as: :string, input_html: { data: { controller: "datepicker" }, value: params[:booking_start_at]} %>
+
+    <div class="cardbookingdates">
+      <div class="cardbookingselection_left">
+        <div class="inputadj">
+          <%= f.input :start_at, label: "Start from", as: :string, input_html: { data: { controller: "datepicker" , action: "change->datepicker#fire", target:"togglableElement"}, value: params[:booking_start_at]}, id:"startdate"%>
+        </div>
+      </div>
+      <div class="cardbookingselection_right">
+        <div class="inputadj">
+          <%= f.input :end_at, label: "To", as: :string, input_html: { data: { controller: "datepicker" , action: "change->datepicker#fire", target:"togglableElement"}, value: params[:booking_end_at]}, id:"enddate"%>
+        </div>
+      </div>
     </div>
 
-    <div class="form-group mt-3">
-      <%= f.input :end_at, label: "Fin de location", as: :string, input_html: { data: { controller: "datepicker" }, value: params[:booking_end_at] } %>
+    <% if params[:booking_start_at].present? && params[:booking_end_at].present? %>
+      <% nbdays = (params[:booking_end_at].to_date - params[:booking_start_at].to_date).to_s.split("/").first.to_i %>
+    <% else %>
+      <% nbdays = 1 %>
+    <% end %>
+
+    <div class="bookcard">
+      <div class="booktext">
+        <p>Duration : <b id="night"><%= nbdays %></b> days </p>
+        <p>Price per day : <b id="price"><%= masterpiece.price %></b> € </p>
+        <p>Total amount : <b id="totalprice"><%= masterpiece.price * nbdays %></b> € </p>
+      </div>
+      <div class="bookbtn">
+        <div class="form-group mt-3">
+        <%= f.submit 'Book now !', class: 'btnSubmitSmall' %>
+        </div>
+      </div>
     </div>
 
-    <div class="form-group mt-3">
-      <%= f.submit 'Réserver', class: 'btn btn-ghost' %>
-    </div>
   <% end %>
+
+
+
 <%# on pourra prévoir ici un peu de js pour afficher le prix total en fonction du nombre de jours sélectionnés %>
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>

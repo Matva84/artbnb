@@ -1,19 +1,32 @@
 <div class="container">
   <div class="row my-5">
     <div class="col">
-      <h1 class="mt-3">Annonces</h1>
+      <h1 class="mt-3">Listings</h1>
 
-      <div data-controller="toggle-add-masterpiece" class="my-5">
-        <button data-action="click->toggle-add-masterpiece#fire" class="btn btn-ghost">Publier une annonce</button>
-        <div data-toggle-add-masterpiece-target="togglableElement" class="d-none">
-          <%= render "form", masterpiece: @new_masterpiece %>
-        </div>
+ <!-- Button trigger modal -->
+<button type="button" class="btn btn-ghost my-5" data-bs-toggle="modal" data-bs-target="#newArtworkModal">
+  Publish a new artwork
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="newArtworkModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newArtworkModalLabel">Publish a New Artwork</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <%= render "form", masterpiece: @new_masterpiece %>
+      </div>
+    </div>
+  </div>
+</div>
 
         <div class="card-product mb-5">
             <div class="card-product-infos">
-              <h2>Analysez les réservations de vos Oeuvres</h2>
-              <p>Vous avez d'autres oeuvres à proposer? Alors publiez une nouvelle annonce!</p>
+              <h2>Review the reservations for your art pieces</h2>
+              <p>Do you have more artworks to offer? Then, post a new listing!</p>
             </div>
           <%= image_tag "beau-graffiti-cubisme.jpg" %>
         </div>
@@ -24,23 +37,23 @@
           <%= cl_image_tag masterpiece.photo.key, class: "avatar-large" %>
           <div class="user-masterpiece-content">
             <p><%= masterpiece.title%></p>
-            <p><small>Réservation en cours : <%=masterpiece.bookings.count%> </small></p>
+            <p><small>Booking in progress : <%=masterpiece.bookings.count%> </small></p>
           </div>
           <div class="user-masterpiece-actions">
-            <%= link_to "Supprimer", masterpiece_path(masterpiece.id), class: 'btn btn-ghost', data: {turbo_method: :delete, turbo_confirm: "Voulez vous supprimer cette oeuvre?"} %>
-            <button type="button" class="btn btn-ghost mt-3" data-bs-toggle="modal" data-bs-target="#myModal">
-              Réservations
+            <%= link_to "Cancel", masterpiece_path(masterpiece.id), class: 'btn btn-ghost', data: {turbo_method: :delete, turbo_confirm: "Do you really want to cancel this artwork?"} %>
+            <button type="button" class="btn btn-ghost mt-3" data-bs-toggle="modal" data-bs-target="#myModal<%= masterpiece.id %>">
+              Bookings
             </button>
           </div>
 
-              <div class="modal" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal" id="myModal<%= masterpiece.id %>" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-body">
                         <%= render "booking", bookings: @bookings, users: @users, masterpiece: masterpiece %>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Fermer</button>
+                      <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>
@@ -49,6 +62,14 @@
         </div>
       <% end %>
       </div>
+
+          <div data-controller="toggle-add-masterpiece" class="my-3 row justify-content-center">
+            <button class="btn btn-ghost my-3 w-25" data-action="click->toggle-add-masterpiece#fire">Key statistics</button>
+            <div data-toggle-add-masterpiece-target="togglableElement" class="d-none">
+                <%= render "shared/amount", masterpieces: @masterpieces_all, bookings_user: @bookings_user, bookings_all: @bookings %>
+            </div>
+          </div>
+
     </div>
   </div>
 </div>

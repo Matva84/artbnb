@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["totalDep", "totalGag"]
 
   connect() {
-    const labels = ["Gain", "Dépense"]
+    const labels = ["Income", "Expense"]
     const data = [this.totalGagTarget.dataset.value, this.totalDepTarget.dataset.value]
 
     new Chart(

@@ -26,7 +26,6 @@ section {
   background-size: cover;
   background-position: center;
   transition: transform 0.5s ease;
-  position: relative;
 }
 
 .slide:before {
@@ -36,7 +35,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.25); /* Couleur de fond avec opacité */
+  background-color: rgba(0, 0, 0, 0.15); /* Couleur de fond avec opacité */
 }
 
 .content {
@@ -45,8 +44,7 @@ section {
   left: 40%;
   transform: translate(-50%, -50%);
   text-align: left;
-  color: white;
-  z-index: 1;
+  color: white; /* Couleur du texte, pour un meilleur contraste avec l'image de fond */
 }
 
 h2 {
@@ -54,9 +52,11 @@ h2 {
   margin-bottom: 20px;
 }
 
-p {
+.slide p {
   font-weight: 300;
   margin-bottom: 30px;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
 }
 
 .dots-container {
@@ -83,13 +83,28 @@ p {
   border-radius: 50%;
   margin: 0 8px;
   gap: 5px;
-  background-color: rgb(188, 188, 188);
+  background-color: rgb(188, 188, 188); /* Couleur des points légèrement transparente */
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
 
 .dot.active {
-  background-color: black;
+  background-color: black; /* Couleur des points pleinement visible */
+}
+
+#btn-slider {
+  background-color: #000000;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 20px 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  &:hover {
+    background-color: #ffffff;
+    color: black;
+  }
 }
 
 ///////* FORM *///////
@@ -118,6 +133,54 @@ p {
   text-align: center;
 }
 
+///////* CARDS MASTERPIECES*///////
+
+.home-cards-masterpieces {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 24px;
+}
+
+.home-card-masterpiece {
+  border: 2px solid #dbdbdb;
+  border-radius: 5px;
+  text-align: center;
+  padding: 30px;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.home-card-masterpiece:hover {
+  box-shadow: rgba(0,0,0,0.2) 0 2px 2px;
+}
+
+.home-card-masterpiece img {
+  height: auto;
+  max-width: 100%;
+  border: 2px solid #dbdbdb;
+  opacity: 1;
+}
+
+.home-card-masterpiece:hover img {
+  opacity: 0.8;
+}
+
+.home-card-masterpiece h3 {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  font-size: 32px;
+  font-weight: 600;
+  text-shadow: 1px 5px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  opacity: 0;
+}
+
+.home-card-masterpiece:hover h3 {
+  opacity: 1;
+}
 
 ///////* BLOCS CATÉGORIES *///////
 
